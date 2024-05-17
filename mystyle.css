@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    color: white;
+}
+
+.container {
+    display: flex;
+    /* 按垂直方向布局 三个部分：header footer main-content */
+    flex-direction: column;
+    min-height: 100%;
+}
+
+/* 头部 */
+.header{
+    font-family: "楷体", KaiTi, "Microsoft YaHei", SimKai, serif; /* 楷体的英文名是KaiTi */
+    background: #2d6aa8;
+    padding: 20px;
+    text-align: center;
+}
+/* 尾部 */
+.footer {  
+    background: #2d6aa8;
+    padding: 20px;
+    text-align: center;
+}
+
+/* -------------------------------------------------------- */
+
+/* 导航栏样式 */
+.navbar {
+    background-color: #fc4a1a;
+    display: flex; /* 使用flex布局 */
+    flex-direction: row; /* 主轴设置为垂直方向 */
+    justify-content: space-between;
+    align-items: center; /* 使链接居中对齐 */
+  }
+
+  .navbar a {
+    flex: auto;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 10px;
+    text-decoration: none;
+  }
+
+  .navbar a:hover {
+    background-color: #007849;
+  }
+
+  /* -------------------------------------------------------- */
+
+.main-content {
+    display: flex;
+    /* 按照水平方向布局 左边栏 右边栏 */
+    flex-direction: row;
+    flex: 1;
+    overflow: hidden; /* 防止内容溢出 */
+}
+
+/* ---------------------------------------------------- */
+/* 左边栏 也是一个容器，里面有若干个卡片 */
+.left {
+    flex: 3;  /* 左边栏的宽度，宽度占满剩余空间 */
+    display: flex;
+    flex-direction: column;
+    background: #828081;
+    padding: 2px;
+    /* border: 1px solid #ccc; */
+    text-align: center;
+    justify-content: space-between;
+    min-height: 100%;
+}
+
+/* -------------------------------------------------------- */
+/* 右边栏 */
+.right {
+    
+    flex: 1; /* 右边栏的宽度，宽度占满剩余空间 */
+    background: #828081;
+    padding: 1px;
+    /* border: 1px solid #ccc; */
+    text-align: center;
+}
+
+
+/* ------------------------------------------------------------- */
+/* 卡片的总体样式 */
+.card {
+    flex:1;
+    background: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 1px; /* 底部外边距，最后一个卡片除外 */
+    margin-left: 1px;
+    margin-right: 1px;
+    margin-top: 1px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+
+
+.card:last-child {
+    margin-bottom: 0; /* 移除最后一个卡片的底部外边距 */
+}
+
+/* 左边卡片样式 */
+.left_card {
+    background-color: #CD853F;
+    text-align: left;
+
+}
+/* 右边卡片样式 */
+.right-card {
+    background-color: #CD853F;
+    text-align: left;
+}
+/* ------------------------------------------------------------------ */
+
+.footer {
+    margin-top: auto; /* 使页脚始终位于底部 */
+}

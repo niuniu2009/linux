@@ -4,18 +4,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Flexbox Holy Grail Layout</title>
+    <link rel="stylesheet" href="mystyle.css">
 </head>
 
 <body>
-    <p><a href="https://www.baidu.com">Click here</a></p>
-    <p><a href="https://zhuanlan.zhihu.com/p/673378266" target="_blank">chapter01</a></p>
-    <p><a href="https://zhuanlan.zhihu.com/p/685060938" target="_blank">chapter02</a></p>
-    <p><a href="https://zhuanlan.zhihu.com/p/673466707" target="_blank">chapter05</a></p>
-    <p><a href="chapter08/chapter_08.html" target="_blank">chapter08</a></p>
-    <p><a href="chapter09/chapter_09.html" target="_blank">chapter09</a></p>
-    <p><a href="chapter11/chapter_11.html" target="_blank">chapter10</a></p>
-    <p><a href="lesson_test/《Linux期末学习总结》.pdf" target="_blank">期末学习总结（网安专业）</a></p>
+    <div class="container">
+        <!--头部  -->
+        <header class="header">
+            <h1>君子有酒，酌言献之</h1>
+        </header>
+
+        <!-- 导航 -->
+        <div class="navbar">
+
+            <a href="https://zhuanlan.zhihu.com/p/673378266" target="_blank">第1讲：前世今生</a>
+            <a href="https://zhuanlan.zhihu.com/p/685060938" target="_blank">第2讲：一探究竟</a>
+
+
+            <a href="https://zhuanlan.zhihu.com/p/685060938" target="_blank">第3讲：常用命令</a>
+
+            <a href="https://zhuanlan.zhihu.com/p/673466707" target="_blank">第5讲：登堂入室</a>
+
+            <a href="https://zhuanlan.zhihu.com/p/685060938" target="_blank">第6讲：用户权限</a>
+            <a href="https://zhuanlan.zhihu.com/p/685060938" target="_blank">第7讲：磁盘管理</a>
+
+            <a href="chapter08/chapter_08.html" target="_blank">第8讲：内存秘密</a>
+            <a href="chapter09/chapter_09.html" target="_blank">第9讲：软件安装</a>
+            <a href="chapter11/chapter_11.html" target="_blank">第10讲：网络应用</a>
+
+            <a href="#关于">关于</a>
+        </div>
+
+        <!-- 主体 -->
+        <div class="main-content">
+            <!-- 左边栏 -->
+            <div class="left">
+                <div class="card left_card">
+                    <p>Linux课堂笔记，欢迎交流</p>
+                    <p>目前的笔记比较分散，一部分在<a href="https://zhuanlan.zhihu.com/p/673378266" target="_blank">知乎专栏</a>上，
+                        另一部分在<a href="https://niuniu2009.github.io/linux/" target="_blank">GitHub pages</a>，陆续更新中...</p>
+                </div>
+                <div class="card left_card">Card 2</div>
+                <div class="card left_card">Card 3</div>
+                <div class="card left_card">Card 4</div>
+            </div>
+            <!-- 右边栏 -->
+            <div class="right">
+                <div class="card right-card">
+                    <p>成绩构成：</p><br>
+                    <p>随堂测试30%，总结40%，实验30%</p>
+                </div>
+                <div class="card right-card">
+                    <p>四次随堂测试：</p><br>
+                    <p>第一次：<br>
+                        第二次：<br>
+                        第三次：<br>
+                        第四次：</p>
+                </div>
+                <div class="card right-card">
+                    <p>期末总结：</p><br>
+                    <p>学习总结：<a href="lesson_test/《Linux期末学习总结》.pdf" target="_blank">期末学习总结</a></p>
+                    <p>扫码考试：<a href="lesson_test/《Linux期末学习总结》.pdf" target="_blank">扫描二维码</a></p>
+                </div>
+                <div class="card right-card">
+                    <p>关注我：</p><br>
+                    <p>知乎账号：<a href="https://zhuanlan.zhihu.com/p/673378266" target="_blank">君子有酒，酌言献之</a></p>
+                    <p>GitHub Pages：<a href="https://niuniu2009.github.io/linux/" target="_blank">GitHub pages</a></p>
+                </div>
+            </div>
+        </div>
+        <!--底部-->
+        <footer class="footer">电子邮件：maillsr@163.com</footer>
+    </div>
 </body>
 
 </html>
