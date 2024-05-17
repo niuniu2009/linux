@@ -64,6 +64,8 @@ body, html {
     overflow: hidden; /* 防止内容溢出 */
 }
 
+
+
 /* ---------------------------------------------------- */
 /* 左边栏 也是一个容器，里面有若干个卡片 */
 .left {
@@ -112,13 +114,13 @@ body, html {
 
 /* 左边卡片样式 */
 .left_card {
-    background-color: #CD853F;
+    background-color: #60656c;
     text-align: left;
 
 }
 /* 右边卡片样式 */
 .right-card {
-    background-color: #CD853F;
+    background-color: #60656c;
     text-align: left;
 }
 /* ------------------------------------------------------------------ */
