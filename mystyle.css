@@ -34,14 +34,14 @@ body, html {
 
 /* 导航栏样式 */
 .navbar {
-    background-color: #2d6aa8;
+    /* background-color: #2d6aa8; */
     display: flex; /* 使用flex布局 */
     flex-direction: row; /* 主轴设置为垂直方向 */
     justify-content: space-between;
     align-items: center; /* 使链接居中对齐 */
   }
 
-  .navbar a {
+  /* .navbar a {
     flex: auto;
     display: block;
     color: white;
@@ -52,7 +52,7 @@ body, html {
 
   .navbar a:hover {
     background-color: #007849;
-  }
+  } */
 
   /* -------------------------------------------------------- */
 
