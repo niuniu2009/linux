@@ -6,7 +6,7 @@
 
 body, html {
     height: 100%;
-    color: white;
+    color: black;
 }
 
 .container {
@@ -22,6 +22,7 @@ body, html {
     background: #2d6aa8;
     padding: 20px;
     text-align: center;
+    align-items: center;
 }
 /* 尾部 */
 .footer {  
@@ -115,13 +116,13 @@ body, html {
 
 /* 左边卡片样式 */
 .left_card {
-    background-color: #4ea182;
+    background-color: #eee2e5;
     text-align: left;
 
 }
 /* 右边卡片样式 */
 .right-card {
-    background-color: #4ea182;
+    background-color: #eee2e5;
     text-align: left;
 }
 /* ------------------------------------------------------------------ */

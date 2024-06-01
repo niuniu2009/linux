@@ -8,55 +8,59 @@
     <script src="bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
     <title>Flexbox Holy Grail Layout</title>
     <link rel="stylesheet" href="mystyle.css">
-
 </head>
 
 <body>
-    <div class="container">
+    <div class="container flex-column">
         <!--头部  -->
-        <!-- <header class="header">
-            <h1>君子有酒，酌言献之</h1>
-        </header> -->
+        <header class="d-flex align-items-center justify-content-center header text-white">
+            <div class="text-center">
+                <h3>君子有酒，酌言献之</h3>
+            </div>   
+        </header>
 
         <!-- 导航 -->
-        <div class="navbar navbar-expand-lg">
-            <a href="https://zhuanlan.zhihu.com/p/673378266" target="_blank">第1讲：前世今生</a>
-            <a href="https://zhuanlan.zhihu.com/p/685060938" target="_blank">第2讲：一探究竟</a>
-            <!-- <a href="https://zhuanlan.zhihu.com/p/685060938" target="_blank">第3讲：常用命令</a> -->
-            <a href="https://zhuanlan.zhihu.com/p/673466707" target="_blank">第5讲：登堂入室</a>
-            <!-- <a href="https://zhuanlan.zhihu.com/p/685060938" target="_blank">第6讲：用户权限</a>
-            <a href="https://zhuanlan.zhihu.com/p/685060938" target="_blank">第7讲：磁盘管理</a> -->
-            <a href="chapter08/chapter_08.html" target="_blank">第8讲：内存秘密</a>
-            <a href="chapter09/chapter_09.html" target="_blank">第9讲：软件安装</a>
-            <a href="chapter11/chapter_11.html" target="_blank">第10讲：网络应用</a>
-            <!-- <a href="#关于">关于</a> -->
-
-            <!-- begin 下拉菜单 -->
-            <ul class="nav nav-pills">
+        <div class="container g-0">
+             <!-- begin 下拉菜单 -->
+            <ul class="nav bg-secondary  nav-pills justify-content-between">
                 <li class="nav-item">
-                  <a class="nav-link" href="#">link</a>
+                    <a class="nav-link text-white" href="#">笔记首页</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">link</a>
+                    <a class="nav-link text-white" href="https://niuniu2009.github.io/linux/" target="_blank">GitHub Pages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="https://zhuanlan.zhihu.com/p/673378266" target="_blank">知乎专栏</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">有道云笔记</a>
                 </li>
 
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Dropdown</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Link 1</a></li>
-                    <li><a class="dropdown-item" href="#">Link 2</a></li>
-                    <li><a class="dropdown-item" href="#">Link 3</a></li>
-                  </ul>
+                    <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#">课堂笔记分享</a>
+                    <ul class="dropdown-menu">
+                        <a class="dropdown-item" href="https://zhuanlan.zhihu.com/p/673378266" target="_blank">Ch01：前世今生</a>
+                        <a class="dropdown-item" href="https://zhuanlan.zhihu.com/p/685060938" target="_blank">Ch02：一探究竟</a>
+                        <a class="dropdown-item" href="https://zhuanlan.zhihu.com/p/673466707" target="_blank">Ch05：登堂入室</a>
+                        <a class="dropdown-item" href="chapter08/chapter_08.html" target="_blank">Ch08：内存秘密</a>
+                        <a class="dropdown-item" href="chapter09/chapter_09.html" target="_blank">Ch09：软件安装</a>
+                        <a class="dropdown-item" href="chapter11/chapter_11.html" target="_blank">Ch11：网络基础</a>
+                    </ul>
                 </li>
-              </ul>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#">实战项目</a>
+                    <ul class="dropdown-menu">
+                        <a class="dropdown-item" href="training/project01.html" target="_blank">实战01：环境搭建</a>
+                        <a class="dropdown-item" href="training/project02.html" target="_blank">实战02：磁盘阵列</a>
+                        <a class="dropdown-item" href="training/project03.html" target="_blank">实战03：逻辑卷LVM</a>
+                        <a class="dropdown-item" href="training/project04.html" target="_blank">实战04：自动运维</a>
+                        <a class="dropdown-item" href="training/project05.html" target="_blank">实战05：服务器与Firewalld</a>
+                    </ul>
+                </li>
+            </ul>
             <!-- end -->
-
-
         </div>
-
-
-
-
 
         <!-- 主体 -->
         <div class="main-content">
@@ -67,9 +71,26 @@
                     <p>目前的笔记比较分散，一部分在<a href="https://zhuanlan.zhihu.com/p/673378266" target="_blank">知乎专栏</a>上，
                         另一部分在<a href="https://niuniu2009.github.io/linux/" target="_blank">GitHub pages</a>，陆续更新中...</p>
                 </div>
-                <div class="card left_card">Card 2</div>
-                <div class="card left_card">Card 3</div>
-                <div class="card left_card">Card 4</div>
+                <div class="card left_card">
+                    <p>有趣的Linux：</p>
+                    <p>（1）电脑博物馆：<a href="http://www.compumuseum.com/index.html" target="_blank">网页里的电脑博物馆</a></p>
+                    <p>（2）美化你的代码：<a href="https://carbon.now.sh/" target="_blank">生成漂亮代码的网站</a></p>
+                 </div>
+                <div class="card left_card">
+                    <p>Linux资料推荐：</p>
+                    <p>（1）<a href="https://linux.vbird.org/" target="_blank">鸟哥的Linux私房菜</a></p>
+                    <p>（2）<a href="https://wangdoc.com/bash/" target="_blank">BASH脚本基础</a></p>
+                    <p>（3）<a href="https://www.runoob.com/linux/linux-tutorial.html" target="_blank">菜鸟教程</a></p>
+                    <p>（4）<a href="https://www.lanqiao.cn/courses/1" target="_blank">蓝桥云课</a></p>
+                    
+                </div>
+                <div class="card left_card">
+                    <p>Linux实用工具：</p><br>
+                    <p>（1）<a href="https://mobaxterm.mobatek.net/" target="_blank">MobaXterm</a></p>
+                    <p>（2）<a href="https://code.visualstudio.com/" target="_blank">VSCode</a></p>
+                    <p>（3）Linux面板工具：Cockpit</p>
+                    <p>（4）<a href="https://www.cpolar.com/" target="_blank">Cpolar</a></p>
+                </div>
             </div>
             <!-- 右边栏 -->
             <div class="right">
