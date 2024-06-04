@@ -4,6 +4,11 @@
 
 ## 任务4  Shell编程
 
+要求：
+
+- ==7选3完成即可==
+- ==鼓励自选SHELL程序==
+
 参考资料：
 
 - 知乎课堂笔记：[第5篇 Linux登堂入室：shell编程 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/673466707)
