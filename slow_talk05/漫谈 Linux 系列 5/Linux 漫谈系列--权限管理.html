@@ -1,0 +1,821 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-variant-emoji: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; border-right-style: none; border-right-color: currentcolor; background-color: inherit; }
+.CodeMirror-linenumber { -webkit-user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; border-bottom-style: none; border-bottom-color: currentcolor; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+
+
+::marker {
+    font-size: 14px;
+}
+
+pre {
+	--select-text-bg-color: #36284e;
+	--select-text-font-color: #fff;
+}
+
+html {
+	font-size: 16px;
+	-webkit-font-smoothing: antialiased;
+}
+
+html, body {
+	background-color: #f3f2ee;
+	font-family: Arail,Microsoft YaHei;
+	color: #1f0909;
+	line-height: 1.5em;
+}
+
+
+#write {
+	max-width: 40em;
+}
+@media only screen and (min-width: 1000px) {
+	#write {max-width: 960px;}
+}
+
+
+@media only screen and (min-width: 1400px) {
+	#write {max-width: 1080px;}
+}
+
+@media only screen and (min-width: 1900px) {
+	#write {max-width: 1180px;}
+}
+
+ol li {
+	list-style-type: decimal;
+	list-style-position: outside;
+}
+ul li {
+	list-style-type: disc;
+	list-style-position: outside;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+blockquote,
+q {
+	quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: Microsoft YaHei;
+	padding-bottom: 0.3em;
+	border-bottom: 1px solid #d8dee4;
+	font-weight: bold;
+	margin-bottom: 1.5em;
+}
+h1 {
+	font-size: 30px;
+	/*30 / 16*/
+	line-height: 1.6em;
+	/* 48 / 30*/
+	margin-top: 2em;
+}
+h2{
+	font-size: 25px;
+	line-height: 1.15;
+	/*24 / 21*/
+	margin-top: 2.285714em;
+	/*48 / 21*/
+	margin-bottom: 1.15em;
+	/*24 / 21*/
+}
+h3 {
+	font-size: 20px;
+	/*21 / 16*/
+	line-height: 1.15;
+	/*24 / 21*/
+	margin-top: 2.285714em;
+	/*48 / 21*/
+	margin-bottom: 1.15em;
+	/*24 / 21*/
+}
+
+h4 {
+	font-size: 16px;
+	/*18 / 16*/
+	margin-top: 2.67em;
+	/*48 / 18*/
+}
+/* links */
+
+a {
+	text-decoration: none;
+	color: #065588;
+}
+a:hover,
+a:active {
+	text-decoration: underline;
+}
+/* block spacing */
+
+
+/* blockquote */
+
+blockquote {
+	border-left: 3px solid;
+	padding-left: 1em;
+}
+
+/* tables */
+.md-meta,.md-before, .md-after {
+	color:#999;
+}
+
+table {
+	margin-bottom: 1.5em;
+	/*24 / 16*/
+	font-size: 1em;
+	/* width: 100%; */
+}
+thead th,
+tfoot th {
+	padding: .25em .25em .25em .4em;
+	text-transform: uppercase;
+}
+th {
+	text-align: left;
+}
+td {
+	vertical-align: top;
+	padding: .5em .25em .5em .4em;
+}
+
+.md-fences {
+    color: #0079bb;
+}
+
+code {
+	color: #c7254e;
+	padding-left: 2px;
+	padding-right: 2px;
+	font-family: consolas;
+    border-radius: 4px;
+}
+
+pre,
+code,
+tt {
+	font-size: .875em;
+	line-height: 1.714285em;
+}
+
+
+p + ul,
+p + ol{
+	margin-top: .5em;
+}
+
+h3 + ul,
+h4 + ul,
+h5 + ul,
+h6 + ul,
+h3 + ol,
+h4 + ol,
+h5 + ol,
+h6 + ol {
+	margin-top: .5em;
+}
+
+li > ul,
+li > ol {
+	margin-top: inherit;
+	margin-bottom: 0;
+}
+
+li ol>li {
+	list-style-type: lower-alpha;
+}
+
+li li ol>li{
+	list-style-type: lower-roman;
+}
+
+h2,
+h3 {
+	margin-bottom: .75em;
+}
+hr {
+	border-top: none;
+	border-right: none;
+	border-bottom: 1px solid;
+	border-left: none;
+}
+h1 {
+	border-color: #c5c5c5;
+}
+blockquote {
+
+	border-color: #bababa;
+}
+
+blockquote ul,
+blockquote ol {
+	margin-left:0;
+}
+
+.ty-table-edit {
+	background-color: transparent;
+}
+thead {
+	background-color: #dadada;
+}
+tr:nth-child(even) {
+	background: #e8e7e7;
+}
+hr {
+	border-color: #c5c5c5;
+}
+.task-list{
+	padding-left: 1rem;
+}
+
+.md-task-list-item {
+	padding-left: 1.5rem;
+	list-style-type: none;
+}
+
+.md-task-list-item > input:before {
+	content: '\221A';
+	display: inline-block;
+	width: 1.25rem;
+  	height: 1.6rem;
+	vertical-align: middle;
+	text-align: center;
+	color: #ddd;
+	background-color: #F3F2EE;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before{
+	color: inherit;
+}
+
+#write pre.md-meta-block {
+	min-height: 1.875rem;
+	color: #555;
+	border: 0px;
+	background: transparent;
+	margin-top: -4px;
+	margin-left: 1em;
+	margin-top: 1em;
+}
+
+.md-image>.md-meta {
+	color: #9B5146;
+}
+
+.md-image>.md-meta{
+	font-family: Microsoft YaHei;
+}
+
+
+#write>h3.md-focus:before{
+	left: -1.5rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h4.md-focus:before{
+	left: -1.5rem;
+	top: .25rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h5.md-focus:before{
+	left: -1.5rem;
+	top: .0.3125rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h6.md-focus:before{
+	left: -1.5rem;
+	top: 0.3125rem;
+	color:#999;
+	border-color:#999;
+}
+
+.md-toc:focus .md-toc-content{
+	margin-top: 19px;
+}
+
+.md-toc-content:empty:before{
+	color: #065588;
+}
+.md-toc-item {
+	color: #065588;
+}
+
+#write div.md-toc-tooltip {
+	background-color: #f3f2ee;
+}
+
+#typora-sidebar {
+	background-color: #f3f2ee;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+  	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+}
+
+.pin-outline #typora-sidebar {
+	background: inherit;
+	box-shadow: none;
+	border-right: 1px dashed;
+}
+
+.pin-outline #typora-sidebar:hover .outline-title-wrapper {
+	border-left:1px dashed;
+}
+
+.outline-item:hover {
+  background-color: #dadada;
+  border-left: 28px solid #dadada;
+  border-right: 18px solid #dadada;
+}
+
+.typora-node .outline-item:hover {
+  	border-right: 28px solid #dadada;
+}
+
+.outline-expander:before {
+  content: "\f105";
+  font-family: FontAwesome;
+  font-size:12px;
+  top: 1px;
+}
+
+.outline-expander:hover:before,
+.outline-item-open>.outline-item>.outline-expander:before {
+  content: "\f107";
+}
+
+.modal-content {
+	background-color: #f3f2ee;
+}
+
+.auto-suggest-container ul li {
+	list-style-type: none;
+}
+
+/** UI for electron */
+
+.megamenu-menu,
+#top-titlebar, #top-titlebar *,
+.megamenu-content {
+	background: #f3f2ee;
+	color: #1f0909;
+}
+
+.megamenu-menu-header {
+	border-bottom: 1px dashed #202B33;
+}
+
+.megamenu-menu {
+	box-shadow: none;
+	border-right: 1px dashed;
+}
+
+header, .context-menu, .megamenu-content, footer {
+	font-family: Microsoft YaHei;
+	color: #1f0909;
+}
+
+#megamenu-back-btn {
+	color: #1f0909;
+	border-color: #1f0909;
+}
+
+.megamenu-menu-header #megamenu-menu-header-title:before {
+	color: #1f0909;
+}
+
+.megamenu-menu-list li a:hover, .megamenu-menu-list li a.active {
+	color: inherit;
+	background-color: #e8e7df;
+}
+
+.long-btn:hover {
+	background-color: #e8e7df;
+}
+
+#recent-file-panel tbody tr:nth-child(2n-1) {
+    background-color: transparent !important;
+}
+
+.megamenu-menu-panel tbody tr:hover td:nth-child(2) {
+    color: inherit;
+}
+
+.megamenu-menu-panel .btn {
+	background-color: #D2D1D1;
+}
+
+.btn-default {
+	background-color: transparent;
+}
+
+.typora-sourceview-on #toggle-sourceview-btn,
+.ty-show-word-count #footer-word-count {
+	background: #c7c5c5;
+}
+
+#typora-quick-open {
+    background-color: inherit;
+}
+
+.md-diagram-panel {
+	margin-top: 8px;
+}
+
+.file-list-item-file-name {
+	font-weight: initial;
+}
+
+.file-list-item-summary {
+	opacity: 1;
+}
+
+.file-list-item {
+	color: #777;
+}
+
+.file-list-item.active {
+	background-color: inherit;
+	color: black;
+}
+
+.ty-side-sort-btn.active {
+	background-color: inherit;
+}
+
+.file-list-item.active .file-list-item-file-name  {
+	font-weight: bold;
+}
+
+.file-list-item{
+    opacity:1 !important;
+}
+
+.file-library-node.active>.file-node-background{
+	background-color: rgba(32, 43, 51, 0.63);
+	background-color: var(--active-file-bg-color);
+}
+
+.file-tree-node.active>.file-node-content{
+	color: white;
+	color: var(--active-file-text-color);
+}
+
+.md-task-list-item>input {
+	margin-left: -1.7em;
+	margin-top: calc(1rem - 12px);
+}
+
+input {
+	border: 1px solid #aaa;
+}
+
+.megamenu-menu-header #megamenu-menu-header-title,
+.megamenu-menu-header:hover, 
+.megamenu-menu-header:focus {
+	color: inherit;
+}
+
+.dropdown-menu .divider {
+	border-color: #e5e5e5;
+	opacity: 1;
+}
+
+/* https://github.com/typora/typora-issues/issues/2046 */
+.os-windows-7 strong,
+.os-windows-7 strong  {
+	font-weight: 760;
+}
+
+.ty-preferences .btn-default {
+	background: transparent;
+}
+
+.ty-preferences .window-header {
+	border-bottom: 1px dashed #202B33;
+	box-shadow: none;
+}
+
+#sidebar-loading-template, #sidebar-loading-template.file-list-item {
+	color: #777;
+}
+
+.searchpanel-search-option-btn.active {
+	background: #777;
+	color: white;
+}
+
+
+
+/**
+    Name: IntelliJ IDEA darcula theme
+    From IntelliJ IDEA by JetBrains
+    代码高亮：IDEA主题样式
+ */
+
+.cm-s-inner  { font-family: Consolas, Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, serif;}
+.cm-s-inner.CodeMirror { background: #2B2B2B; color: #A9B7C6; padding: 5px;}
+
+.cm-s-inner span.cm-meta { color: #BBB529; }
+.cm-s-inner span.cm-number { color: #6897BB; }
+.cm-s-inner span.cm-keyword { color: #CC7832; line-height: 1em; font-weight: bold; }
+.cm-s-inner span.cm-def { color: #A9B7C6; font-style: italic; }
+.cm-s-inner span.cm-variable { color: #A9B7C6; }
+.cm-s-inner span.cm-variable-2 { color: #A9B7C6; }
+.cm-s-inner span.cm-variable-3 { color: #9876AA; }
+.cm-s-inner span.cm-type { color: #AABBCC; font-weight: bold; }
+.cm-s-inner span.cm-property { color: #FFC66D; }
+.cm-s-inner span.cm-operator { color: #A9B7C6; }
+.cm-s-inner span.cm-string { color: #6A8759; }
+.cm-s-inner span.cm-string-2 { color: #6A8759; }
+.cm-s-inner span.cm-comment { color: #999; }
+.cm-s-inner span.cm-link { color: #CC7832; }
+.cm-s-inner span.cm-atom { color: #CC7832; }
+.cm-s-inner span.cm-error { color: #BC3F3C; }
+.cm-s-inner span.cm-tag { color: #bea063; font-weight: bold; font-style: italic; text-decoration: underline; }
+.cm-s-inner span.cm-attribute { color: #6897bb; }
+.cm-s-inner span.cm-qualifier { color: #6A8759; }
+.cm-s-inner span.cm-bracket { color: #A9B7C6; }
+.cm-s-inner span.cm-builtin { color: #FF9E59; }
+.cm-s-inner span.cm-special { color: #FF9E59; }
+.cm-s-inner span.cm-matchhighlight { color: #FFFFFF; background-color: rgba(50, 89, 48, .7); font-weight: normal;}
+.cm-s-inner span.cm-searching { color: #FFFFFF; background-color: rgba(61, 115, 59, .7); font-weight: normal;}
+
+.cm-s-inner .CodeMirror-cursor { border-left: 1px solid #A9B7C6; }
+.cm-s-inner .CodeMirror-activeline-background { background: #323232; }
+.cm-s-inner .CodeMirror-gutters { background: #313335; border-right: 1px solid #313335; }
+.cm-s-inner .CodeMirror-guttermarker { color: #FFEE80; }
+.cm-s-inner .CodeMirror-guttermarker-subtle { color: #D0D0D0; }
+.cm-s-inner .CodeMirrir-linenumber { color: #606366; }
+.cm-s-inner .CodeMirror-matchingbracket { background-color: #3B514D; color: #FFEF28 !important; font-weight: bold; }
+
+.cm-s-inner div.CodeMirror-selected { background: #214283; }
+
+.CodeMirror-hints.darcula {
+  font-family: Consolas, 'Courier New', monospace;
+  color: #9C9E9E;
+  background-color: #3B3E3F !important;
+}
+
+.CodeMirror-hints.darcula .CodeMirror-hint-active {
+  background-color: #494D4E !important;
+  color: #9C9E9E !important;
+}
+
+
+
+/*大纲紧凑*/
+.outline-item {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.outline-h1{
+	font-size: 14px !important;
+}
+
+.outline-h3,.outline-h4{
+	font-size: 13px !important;
+}
+.outline-expander {
+    height: 1rem !important;
+}
+li.md-list-item {
+    line-height: 120%;
+}
+
+
+
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>Linux 漫谈系列--权限管理</title>
+</head>
+<body class='typora-export typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#linux-漫谈系列--权限管理">Linux 漫谈系列--权限管理</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#0linux-基本权限">0、Linux 基本权限</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1权限对于文件的意义">1、权限对于文件的意义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2权限对于目录的意义">2、权限对于目录的意义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#3改变权限-chmod">3、改变权限 chmod</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1）字符法">（1）字符法</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2）数字法">（2）数字法</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#4默认权限-umask">4、默认权限 umask</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1）什么是-umask">（1）什么是 umask</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2）默认权限如何计算">（2）默认权限如何计算？</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#3）如何修改-umask-的值">（3）如何修改 umask 的值</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#5改变拥有者chown">5、改变拥有者chown</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#6漫画chmod于chown的区别">6、漫画：chmod于chown的区别</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#7改变所属组chgrp">7、改变所属组chgrp</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#8隐藏权限">8、隐藏权限</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1）chattr命令给文件添加i隐藏权限">（1）chattr命令给文件添加i隐藏权限</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2）给一个目录添加上i隐藏权限">（2）给一个目录添加上i隐藏权限</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#3）给一个文件添加上a隐藏权限">（3）给一个文件添加上a隐藏权限</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#4）给一个文件添加上u-或者s隐藏权限">（4）给一个文件添加上u 或者s隐藏权限</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#9特殊权限">9、特殊权限</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1）suid">（1）SUID</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#举例-1取消-passwd-命令的suid-权限">举例 1：取消 passwd 命令的SUID 权限</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#举例-2赋予vi-编辑器suid-权限">举例 2：赋予vi 编辑器SUID 权限</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2）sgid">（2）SGID</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#注意">注意</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#3）sbit">（3）SBIT</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#4）特殊权限设置方法">（4）特殊权限设置方法</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1）数字法">（1）数字法</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2）字符法">（2）字符法</a></div><ul class="outline-children"></ul></li></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#10访问控制列表-acl">10、访问控制列表 ACL</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1）例题-1">（1）例题 1</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2）例题-2">（2）例题 2</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#3）mask-值的作用">（3）mask 值的作用？</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#4）删除acl-权限">（4）删除acl 权限</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#总结">总结</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1）权限总结">（1）权限总结</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2）用户及权限总结">（2）用户及权限总结</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#随堂测试">随堂测试</a></div><ul class="outline-children"></ul></li></ul></li></div></div><div id='write'  class=''><h1 id='linux-漫谈系列--权限管理'><span>Linux 漫谈系列--权限管理</span></h1><p><img src="./assets/image-20250329221822290.png" referrerpolicy="no-referrer" alt="image-20250329221822290"></p><h2 id='0linux-基本权限'><span>0、Linux 基本权限</span></h2><p><span>回忆一下，Linux 存储在 inode 中的属性有哪些？</span></p><p><img src="./assets/image-20250329221943993.png" referrerpolicy="no-referrer" alt="image-20250329221943993"></p><p><span>那么这些属性中第一个字段的是什么意思呢？</span></p><p><img src="./assets/image-20250329222049215.png" referrerpolicy="no-referrer" alt="image-20250329222049215"></p><p><span>权限的作用是是啥？</span></p><p><img src="./assets/image-20250329222114592.png" referrerpolicy="no-referrer" alt="image-20250329222114592"></p><p><span>举例说明权限的意义：</span></p><p><span>分析下面的两个文件的权限是什么？为啥要这样设置？</span></p><p><img src="./assets/carbon.png" referrerpolicy="no-referrer" alt="carbon"></p><p><span>在举一个例子：</span></p><p><img src="./assets/carbon (1).png" referrerpolicy="no-referrer" alt="carbon (1)"></p><h2 id='1权限对于文件的意义'><span>1、权限对于文件的意义</span></h2><p><img src="./assets/image-20250329222645215.png" referrerpolicy="no-referrer" alt="image-20250329222645215"></p><p><span>例如，对于可执行权限想x的理解，当新建一个 shell 脚本的时候，默认是不具有可执行权限的。</span></p><p><img src="./assets/carbon (2).png" referrerpolicy="no-referrer" alt="carbon (2)"></p><h2 id='2权限对于目录的意义'><span>2、权限对于目录的意义</span></h2><p><img src="./assets/image-20250329222655704.png" referrerpolicy="no-referrer" alt="image-20250329222655704"></p><p><img src="./assets/carbon (3).png" referrerpolicy="no-referrer" alt="carbon (3)"></p><p><span>用三个实战演示一下目录了的权限问题：</span></p><ul><li><p><span>实战 1：目录的r 权限</span></p></li></ul><hr /><p><span>如果用户对于目录来说，没有r 权限，就不能使用ls 命令查看该目录下的内容。</span></p><p><img src="./assets/截屏2025-03-30 16.54.11.png" referrerpolicy="no-referrer" alt="截屏2025-03-30 16.54.11"></p><ul><li><p><span>实战 2：目录的x 权限</span></p></li></ul><hr /><p><span>例题：</span></p><p><strong><span>一个用户可以进入一个目录（cd    目录），取决于什么？</span></strong></p><p><img src="./assets/carbon (4).png" referrerpolicy="no-referrer" alt="carbon (4)"></p><p><span>小小实战一下：</span></p><p><img src="./assets/carbon (6).png" referrerpolicy="no-referrer" alt="carbon (6)"></p><p><span>上述实战说明，一个用户只有拥有了r-x 权限后，才可以进入该目录。</span></p><ul><li><p><span>实战 3：目录的w 权限</span></p></li></ul><hr /><p><span>例题：</span></p><p><span>仔细观察下面的例题，分析一下lsr 用户是否可以删除teuser.txt 文件？</span></p><p><img src="./assets/carbon (5).png" referrerpolicy="no-referrer" alt="carbon (5)"></p><p><span>看懂了么？理解为啥不能删除了么？</span></p><p><span>上述例题说明，用户只有对目录拥有了w 权限，才能删除该目录在的文件。</span></p><p><span>在来举一个新建文件的例子：</span></p><p><img src="./assets/carbon (7).png" referrerpolicy="no-referrer" alt="carbon (7)"></p><p><span>看懂了，没有w 权限，无法新建文件。</span></p><h2 id='3改变权限-chmod'><span>3、改变权限 chmod</span></h2><p><strong><span>如果一个文件和目录的权限不符合实际需求，需要如何改变呢？</span></strong></p><p><strong><span>在Linux系统中，使用chmod命令可以改变权限。</span></strong></p><p><strong><span>使用chmod命令改变文件权限的方法有两种，一种是字符法，一种是数字法。</span></strong></p><h3 id='1）字符法'><span>（1）字符法</span></h3><p><strong><span>在字符法中，使用u表示拥有者，g表示同组用户，o来表示其他用户，a表示所有用户。</span></strong></p><p><strong><span>如下所示：</span></strong></p><p><img src="./assets/image-20250330170601117.png" referrerpolicy="no-referrer" alt="image-20250330170601117"></p><p><span>例题：</span></p><ul><li><p><span>在Linux系统，用户想要设置teuser.txt文件的权限为rwxrw-r--，应该如何设置呢？</span></p></li></ul><p><img src="./assets/carbon (8).png" referrerpolicy="no-referrer" alt="carbon (8)"></p><p>&nbsp;</p><ul><li><p><span>对于teuser.txt文件，如果想要所有的用户都具有x的权限，那么应该如何设置呢？</span></p></li></ul><p><img src="./assets/carbon (9).png" referrerpolicy="no-referrer" alt="carbon (9)"></p><p>&nbsp;</p><ul><li><p><span>那如果想要去掉同组用户的w权限，同时给其他用户增加w权限，该如何设置呢？</span></p></li></ul><p><img src="./assets/carbon (10).png" referrerpolicy="no-referrer" alt="carbon (10)"></p><p><span>是不是很简单？</span></p><h3 id='2）数字法'><span>（2）数字法</span></h3><p><strong><span>第二种设置权限的方法是用数字法进行设置，在前面学习到，Linux的基本全权限包括9位，每三个表示一组，在数字法中，需要记住如下的对应关系，其中，每个数字表示对应位置的权限。</span></strong></p><p><img src="./assets/image-20250330171146788.png" referrerpolicy="no-referrer" alt="image-20250330171146788"></p><p>&nbsp;</p><p><span>一图胜千言：</span></p><p><img src="./assets/image-20250330171218359.png" referrerpolicy="no-referrer" alt="image-20250330171218359"></p><p><span>每一组的三个权限需要加在一起，这样的话9位的权限就变成了一个3位数字来表达。</span></p><p><span>比如一个文件的9位权限是rwxr-xr--，那么如何计算数字呢？ </span></p><ul><li><p><span>第一组rwx=4+2+1=7 </span></p></li><li><p><span>第二组r-x=4+0+1=5 </span></p></li><li><p><span>第三组r--=4+0+0=4 </span></p></li></ul><p><span>这样的话9位的权限如果用数字表示就是754。</span></p><p><span>同样的道理，比如一个文件的权限用数字表示是777，那么换算过来9位权限就是rwxrwxrwx。</span></p><p><span>可以使用chmod命令来设置其权限。 </span></p><p><span>chmod命令用法： chmod [选项]... 3位权限数字 文件或目录 </span></p><p><span>选项： 常用的是-R，递归修改文件和目录，也就是连同子目录下的所有文件权限都修改。</span></p><p><span>再来解释一下权限和数字之间的换算关系：</span></p><p><strong><span>420401020进一步简化为652</span></strong></p><p><span>其转换过程为：9 个权限位：rw-r-x-w-   对应的 9 个数字为：420401020  每 3 个一组，相加后得到 652</span></p><ul><li><p><span>权限转换为数字</span></p></li></ul><p><img src="./assets/image-20250330171709620.png" referrerpolicy="no-referrer" alt="image-20250330171709620"></p><ul><li><p><span>数字转换为权限</span></p></li></ul><p><img src="./assets/image-20250330171754992.png" referrerpolicy="no-referrer" alt="image-20250330171754992"></p><p><span>例题：用数字法修改文件权限</span></p><p><img src="./assets/carbon (11).png" referrerpolicy="no-referrer" alt="carbon (11)"></p><p><span>数字法是不是也很简单？</span></p><p><span>最不安全的权限配置方法：</span></p><p><img src="./assets/carbon (12).png" referrerpolicy="no-referrer" alt="carbon (12)"></p><p><span>相当于所有用户拥有了所有的权限。</span></p><h2 id='4默认权限-umask'><span>4、默认权限 umask</span></h2><h3 id='1）什么是-umask'><span>（1）什么是 umask</span></h3><p><img src="./assets/carbon (14).png" referrerpolicy="no-referrer" alt="carbon (14)"></p><p><span>umask值的含义。</span></p><p><span>在Linux系统中，新建一个文件或者目录的时候，如果不指定权限，默认的权限是什么呢？</span></p><p><span>这个默认的权限和umask的值有关系。</span></p><p><span>如下所示： </span></p><p><span>umask的值是一个四位的数字，第一位是表示特殊权限的，与基本权限有关的是后三位。</span></p><p><span>umask的值表示的含义是在新建文件或目录的时默认最大权限基础上需要去掉的权限。</span></p><p><span>那么新建文件或目录时最大的默认权限是多少呢？</span></p><p><img src="./assets/carbon (15).png" referrerpolicy="no-referrer" alt="carbon (15)"></p><h3 id='2）默认权限如何计算'><span>（2）默认权限如何计算？</span></h3><hr /><p><img src="./assets/image-20250330202141735.png" referrerpolicy="no-referrer" alt="image-20250330202141735"></p><p><span>实战一下：</span></p><p><img src="./assets/carbon (16).png" referrerpolicy="no-referrer" alt="carbon (16)"></p><h3 id='3）如何修改-umask-的值'><span>（3）如何修改 umask 的值</span></h3><p><img src="./assets/carbon (17).png" referrerpolicy="no-referrer" alt="carbon (17)"></p><p><span>大多数情况下，不需要修改 umask 的默认值。</span></p><h2 id='5改变拥有者chown'><span>5、改变拥有者chown</span></h2><p><span>以下是使用 chown 命令更改文件或目录所有权的几个具体示例：</span></p><p><img src="./assets/carbon (18).png" referrerpolicy="no-referrer" alt="carbon (18)"></p><p><span>再来两个：</span></p><p><img src="./assets/carbon (18)-3347158.png" referrerpolicy="no-referrer" alt="carbon (18)"></p><h2 id='6漫画chmod于chown的区别'><span>6、漫画：chmod于chown的区别</span></h2><p><span>chown ： </span></p><p><span>Linux 中用来改变某个文件的属主的命令，如漫画中所示，将某个“资源”（门）的访问权限给予别人。 </span></p><p><span>chmod ：</span></p><p><span> Linux 中用来改变某个文件的访问模式的命令，如漫画中所示，chmod 777 会将“大门”敞开，谁都可以进出了。</span></p><p><img src="./assets/image-20250330230707340.png" referrerpolicy="no-referrer" alt="image-20250330230707340"></p><h2 id='7改变所属组chgrp'><span>7、改变所属组chgrp</span></h2><p><img src="./assets/carbon (19).png" referrerpolicy="no-referrer" alt="carbon (19)"></p><h2 id='8隐藏权限'><span>8、隐藏权限</span></h2><p><span>Linux系统中，除了基本的r、w、x权限之外，还有一些隐藏的权限，这些隐藏的权限只有root用户可以设置，普通用户是不能设置的。</span></p><p><span>设置隐藏权限的命令是chattr。</span></p><p><span>具体语法格式如下所示： chattr [+-=] [属性] 文件或目录名 </span></p><p><span>解释： </span></p><ul><li><p><span>表示在原有的基础上增加某种隐藏权限； </span></p></li><li><p><span>表示在原有的基础上去掉某种隐藏权限；</span></p></li><li><p><span>= 仅仅设置=后面的隐藏权限；</span></p></li></ul><p><img src="./assets/截屏2025-03-30 23.12.35.png" referrerpolicy="no-referrer" alt="截屏2025-03-30 23.12.35"></p><p><span>举例：</span></p><h3 id='1）chattr命令给文件添加i隐藏权限'><span>（1）chattr命令给文件添加i隐藏权限</span></h3><p><img src="./assets/carbon (20).png" referrerpolicy="no-referrer" alt="carbon (20)"></p><p><span>一个文件拥有了i 权限以后，该文件不能被删除。</span></p><h3 id='2）给一个目录添加上i隐藏权限'><span>（2）给一个目录添加上i隐藏权限</span></h3><p><span>【例题】给一个目录添加上i隐藏权限，并进行测试。</span></p><p><span>只能修改该目录下文件，但是不能新建和删除文件。</span></p><p><img src="./assets/carbon (21).png" referrerpolicy="no-referrer" alt="carbon (21)"></p><p><span>可以看出，dteuser目录拥有了i 权限以后，用户就不能在该目录内新建文件。</span></p><p><span>那么是否可以修改和删除文件呢？</span></p><p><img src="./assets/carbon (22).png" referrerpolicy="no-referrer" alt="carbon (22)"></p><p><span>不影响修改文件的权限，但是不能删除文件。</span></p><h3 id='3）给一个文件添加上a隐藏权限'><span>（3）给一个文件添加上a隐藏权限</span></h3><p><span>【例题】给一个文件添加a隐藏权限，并进行测试。</span></p><p><img src="./assets/carbon (23).png" referrerpolicy="no-referrer" alt="carbon (23)"></p><p><span>通过上述例子可以看到，文件的i、a隐藏权限都非常有用，如果一个文件或者目录很重要，需要加强安全保护，就可以考虑给其设置这样的保护措施，从而实现数据安全。</span></p><h3 id='4）给一个文件添加上u-或者s隐藏权限'><span>（4）给一个文件添加上u 或者s隐藏权限</span></h3><p><span>在美剧《越狱》的第一季中，主人公迈克尔·斯科菲尔德把装有越狱计划的硬盘开窗扔进了湖中，结果在第二季被警探打捞出来恢复了数据，然后就有了第二季、第三季、第四季、第五季，他和哥哥的逃亡故事。所以，要想彻底删除某个文件，可以使用+s参数来保证其被删除后不可恢复—硬盘上的文件数据会被用零块重新填充，那就更保险了。</span></p><p><img src="./assets/u=3826893093,1131251518&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG.jpeg" referrerpolicy="no-referrer" alt="img"></p><p><span>u 权限：文件可恢复</span></p><p><span>s 权限：文件彻底删除</span></p><h2 id='9特殊权限'><span>9、特殊权限</span></h2><p><img src="./assets/image-20250331164441971.png" referrerpolicy="no-referrer" alt="image-20250331164441971"></p><h3 id='1）suid'><span>（1）SUID</span></h3><p><img src="./assets/carbon (24).png" referrerpolicy="no-referrer" alt="carbon (24)"></p><p><img src="./assets/image-20250331165156068.png" alt="image-20250331165156068" style="zoom:50%;" /></p><p><span>如图所示：本来应该是文件拥有者占据的x权限位置，现在被一个字符s所替代，那么这个字符表示的含义是什么呢？</span></p><p><span>在Linux系统中，这样的权限是一种特殊的权限，称为SUID。</span></p><p><span>在给一个文件设置SUID的时候，需要注意以下几个地方： </span></p><p><span>（1）只有二进制可执行程序文件才能设置SUID； </span></p><p><span>（2）运行程序的用户对于该程序要有x的可执行权限； </span></p><p><span>（3）s权限仅在程序运行的过程中有效； </span></p><p><span>（4）运行程序的用户将临时具有该程序拥有者的权限。</span></p><p><img src="./assets/carbon (25).png" referrerpolicy="no-referrer" alt="carbon (25)"></p><p><span>在用户管理的章节中，应该可以知道，修改后的口令其实就是存储在/etc/shadow文件中了。</span></p><p><span>那么看到这里，很多人应该就很疑惑了。</span></p><p><span>按照道理来说，普通用户zhangsan是没有权限对文件/etc/shadow文件进行写入操作的，</span></p><p><span>但是在这里为什么zhangsan这个用户可以通过passwd命令来修改口令文件呢？</span></p><p><strong><span>这就是SUID的作用。</span></strong></p><blockquote><p><span>因为命令文件/usr/bin/passwd有了rwsr-xr-x这样的权限，就可以实现一些特殊的功能，也就是说当一个普通用户zhangsan去运行/usr/bin/passwd这个程序的时候，在程序运行的过程中，zhangsan用户就临时的具备了程序/usr/bin/passwd的拥有者的权限，而程序/usr/bin/passwd的拥有者是root，也就是说这个时候的zhangsan就拥有了root的权限，那么自然地也就可以对口令文件/etc/shadow进行写入操作了。</span></p></blockquote><p><img src="./assets/image-20250331165851199.png" referrerpolicy="no-referrer" alt="image-20250331165851199"></p><p><span>如图所示，作为zhangsan这个用户，本来是没有权限去对文件/etc/shadow写入的，但是由于程序/usr/bin/passwd被赋予了SUID权限，所以zhangsan这个用户去运行该程序时，就临时取得了root的身份，从而能够对文件/etc/shadow进行写入操作。</span></p><p><span>对于zhangsan用户来说，由于/bin/cat没有设置SUID权限，所以运行该程序时其身份不会发生改变，因此不能查看/etc/shadow文件。</span></p><p><img src="./assets/carbon (26).png" referrerpolicy="no-referrer" alt="carbon (26)"></p><p><span>也可以这么来理解，拥有了SUID特殊权限的程序，在运行的过程中可以让用户临时转变身份，从而进行提权操作，完成一些本来没有权限完成的操作。需要注意的是SUID权限只在文件执行过程中有效，一旦执行完毕，身份的切换也随之消失。</span></p><hr /><hr /><p><span>特别需要提醒的是，不要轻易地给一个二进制的可执行程序设置SUID权限.</span></p><p><span>如果SUID权限设置不当，会给Linux系统造成重大安全隐患。</span></p><h4 id='举例-1取消-passwd-命令的suid-权限'><span>举例 1：取消 passwd 命令的SUID 权限</span></h4><p><span>【例题】如果取消掉/usr/bin/passwd的SUID权限，会有什么后果呢？</span></p><p><img src="./assets/carbon (27).png" referrerpolicy="no-referrer" alt="carbon (27)"></p><p><span>可以看到当取消掉/usr/bin/passwd的SUID权限后，所有的普通用户都不能通过passwd来更改自己的口令了。</span></p><p><span>千万要记得使用如下命令把权限改回来：</span></p><p><img src="./assets/carbon (28).png" referrerpolicy="no-referrer" alt="carbon (28)"></p><h4 id='举例-2赋予vi-编辑器suid-权限'><span>举例 2：赋予vi 编辑器SUID 权限</span></h4><p><span>【例题】如果赋予了一些不该拥有SUID权限的程序拥有了该权限，会有什么后果呢？</span></p><p><span>比如Linux系统中经常使用vim编辑器来修改文件。如果给/usr/bin/vim这个程序赋予了SUID权限，那么就带来很多意想不到的问题。</span></p><p><img src="./assets/carbon (29).png" referrerpolicy="no-referrer" alt="carbon (29)"></p><p><span>该例题表明，赋予/usr/bin/vim这个程序SUID权限以后，任何一个普通用户在运行vim命令的时候，都临时的具备了root的权限，也就是说这个时候，任何一个普通用户都变成了超级用户，可以对系统当中重要的资料和文件以root的身份进行删改，对系统可以造成严重的安全问题。</span></p><blockquote><p><span>这样的权限配置漏洞也经常会被黑客利用，对系统进行提权攻击。比如普通用户可以使用vim修改/etc/paawd、/etc/shadow文件，把自己的uid修改为0，这样普通用户就变成了超级用户，那么这个普通用户就可以随时关闭系统的服务，随时修改任何数据文件，向网络发送数据，随时添加各种类型的用户，做任何想做的事情，那么后果是难以想象的，对于Linux系统来说，就没有安全性可言了。</span></p></blockquote><p><img src="./assets/carbon (30).png" referrerpolicy="no-referrer" alt="carbon (30)"></p><h3 id='2）sgid'><span>（2）SGID</span></h3><p><img src="./assets/image-20250331204114409.png" alt="image-20250331204114409" style="zoom: 50%;" /></p><p><span>一个目录具有SGID权限，并且该目录的所属的组是zhangsan，意味着在该目录下新建的文件file，会继承该目录的群组。 </span></p><p><span> 也就是说，该目录下所有新建的文件的组群都是zhangsan。</span></p><p><span>SGID特殊权限有两种应用场景：</span></p><p><span>（1）当对二进制程序进行设置时，能够让执行者临时获取文件所属组的权限；</span></p><p><span>SGID的第一种功能是参考SUID而设计的，不同点在于执行程序的用户获取的不再是文件所有者的临时权限，而是获取到文件所属组的权限。</span></p><p><span>（2）当对目录进行设置时，则是让目录内新创建的文件自动继承该目录原有用户组的名称。</span></p><p><span>每个文件都有其归属的所有者和所属组，当创建或传送一个文件后，这个文件就会自动归属于执行这个操作的用户（即该用户是文件的所有者）。如果现在需要在一个部门内设置共享目录，让部门内的所有人员都能够读取目录中的内容，那么就可以在创建部门共享目录后，在该目录上设置SGID特殊权限位。这样，部门内的任何人员在里面创建的任何文件都会归属于该目录的所属组，而不再是自己的基本用户组。此时，用到的就是SGID的第二个功能，即在某个目录中创建的文件自动继承该目录的用户组（只可以对目录进行设置）。</span></p><p><span>主要作用：便于多个用户共享一个目录内的资源。</span></p><p><span>【例题】首先添加两个用户user1和user2，两者都属于teusergroup组</span></p><p><img src="./assets/carbon (31).png" referrerpolicy="no-referrer" alt="carbon (31)"></p><p><span>然后，创建共同的工作目录/srv/teuserhome，并修改该目录的所属组为teusergroup，权限配置为rwxrwx---。</span></p><p><span> 新建一个目录/srv/teuserhome，作为user1和user2的共同的工作目录。</span></p><p><img src="./assets/carbon (32).png" referrerpolicy="no-referrer" alt="carbon (32)"></p><p><span>以user1的身份登录，并在/srv/teuserhome目录中新建一个文件a.txt</span></p><p><img src="./assets/carbon (33).png" referrerpolicy="no-referrer" alt="carbon (33)"></p><p><span>接上题，赋予/srv/teuserhome目录SGID特殊权限，然后再进行测试</span></p><p><img src="./assets/carbon (34).png" referrerpolicy="no-referrer" alt="carbon (34)"></p><p><span>通过查看新建的文件和目录发现，它们的所属组都是teusergroup，原因是其上层目录/srv/tesuerhome被赋予了SGID权限，在其下面新建的文件或者子目录都会继承上层目录的所属组。</span></p><p><span>解释如下图：</span></p><p><img src="./assets/image-20250331205359369.png" referrerpolicy="no-referrer" alt="image-20250331205359369"></p><h4 id='注意'><span>注意</span></h4><p><span>SGID特殊权限使用说明，一般情况下，SGID权限是针对目录来说的，当一个目录配置了SGID权限后：</span></p><p><span>（1）如果用户对于该目录具有r与x的权限，那么该用户可以进入此目录；</span></p><p><span>（2）用户在该目录下的用户组将会变成该目录的用户组；</span></p><p><span>（3）如果用户对此目录有w权限，则用户所创建的新文件的用户组与该目录的用户组相同。</span></p><h3 id='3）sbit'><span>（3）SBIT</span></h3><p><span>现在，大学里的很多老师都要求学生将作业上传到服务器的特定共享目录中，但总是有几个“破坏分子”喜欢删除其他同学的作业，这时就要设置SBIT（Sticky Bit）特殊权限位了（也可以称之为特殊权限位之粘滞位）。</span></p><p><span>SBIT特殊权限位可确保用户只能删除自己的文件，而不能删除其他用户的文件。</span></p><p><span>换句话说，当对某个目录设置了SBIT粘滞位权限后，那么该目录中的文件就只能被其所有者执行删除操作了。</span></p><p><span>Linux统中的/tmp作为一个共享文件的目录，默认已经设置了SBIT特殊权限位，因此除非是该目录的所有者，否则无法删除这里面的文件。</span></p><p><span>\为了说明SBIT特殊权限的作用，首先来分析一个例题：</span></p><p><span>如下所示，首先查看Linux系统中/tmp目录的权限，发现一个特殊的标志，在第10位上的权限x位置被一个t字符所代替。</span></p><p><span>这里的t就是所讲的SBIT特殊权限，那么该权限有什么作用呢？ </span></p><p><span>先解释SBIT权限的含义： </span></p><p><span>（1）首先SBIT权限只针对目录有效，对文件无效； </span></p><p><span>（2）一个目录设置SBIT权限后，用户对于该目录具有w、x权限的情况下，当用户在该目录下创建文件获目录时，只有自己与root才有权利删除该文件。</span></p><p><img src="./assets/carbon (35).png" referrerpolicy="no-referrer" alt="carbon (35)"></p><p><span>虽然这里的用户zhangsan 拥有可以删除文件的权限，但是因为该目录设置了 SBIT，所以实际上无法删除teuser.txt 文件。</span></p><p><span>其实，一个用户是否能删除一个文件，并不取决于该用户对该文件的权限，而是看该用户是否对该文件所在的目录是否有写入权限。</span></p><blockquote><p><span>分析：zhangsan用户为什么不能删除/tmp/teuser.txt，按照正常来理解/tmp的权限为rwxrwxrwt，也就意味着，zhangsan用户是可以删除/tmp/teuser.txt文件的，但是正是因为/tmp具有SBIT特殊权限，导致zhangsan用户的不能删除其他用户创建的文件。这也就是SBIT权限的特殊作用。</span></p></blockquote><p><img src="./assets/image-20250331210425549.png" referrerpolicy="no-referrer" alt="image-20250331210425549"></p><p><span>所以SBIT特殊权限又称为粘滞位，防删除位。SBIT 权限仅对目录有效，一旦目录设定了 SBIT 权限，则用户在此目录下创建的文件或目录，就只有自己和 root 才有权利修改或删除该文件。</span></p><h3 id='4）特殊权限设置方法'><span>（4）特殊权限设置方法</span></h3><p><span>SUID、SGID和SBIT这三种特殊权限的设置方法和Linux的基本权限设置方法一样，也分为两种方式：一种是数字法，一种是字符法。</span></p><h4 id='1）数字法'><span>（1）数字法</span></h4><p><span>Linux的基本权限的数字法是用3位数字来设置，而特殊权限是在三位的数字的最前面再加上一位数字，变为4位数字。4位数字的第一位就是特殊权限的位置。这三种特殊权限对应的权限分别是：</span></p><p><span>SUID--4</span></p><p><span>SGID--2</span></p><p><span>SBIT--1</span></p><p><span>例题 1：同时设置SUID 和SGID</span></p><p><img src="./assets/image-20250331210900138.png" referrerpolicy="no-referrer" alt="image-20250331210900138"></p><p><span>例题 2：同时设置SUID 和SBIT</span></p><p><img src="./assets/image-20250331210914349.png" referrerpolicy="no-referrer" alt="image-20250331210914349"></p><p><span>实战：</span></p><p><img src="./assets/carbon (36).png" referrerpolicy="no-referrer" alt="carbon (36)"></p><p><span>数字法总结如下：</span></p><p><img src="./assets/image-20250331211312503.png" alt="image-20250331211312503" style="zoom:67%;" /></p><p><img src="./assets/image-20250331211322627.png" alt="image-20250331211322627" style="zoom:67%;" /></p><p><img src="./assets/image-20250331211333811.png" alt="image-20250331211333811" style="zoom:67%;" /></p><h4 id='2）字符法'><span>（2）字符法</span></h4><p><span>第二种设置特殊权限的方法是字符法。</span></p><ul><li><p><span>设置SUID使用u+s，设置SGID使用g+s，设置SIBT使用o+t。</span></p></li></ul><ul><li><p><span>去掉特殊权限的方法分别是u-s，g-s，o-s。</span></p></li></ul><p><img src="./assets/carbon (37).png" referrerpolicy="no-referrer" alt="carbon (37)"></p><p><span>基本权限总结：</span></p><p><img src="./assets/image-20250331211841172.png" referrerpolicy="no-referrer" alt="image-20250331211841172"></p><h2 id='10访问控制列表-acl'><span>10、访问控制列表 ACL</span></h2><p><span>ACL是访问控制列表（Access Control List）的意思，在Linux系统，ACL可以提供更加精准的权限控制方法。Linux基本的权限配置只能针对拥有者、用户组和其他人三类人进行权限划分，而ACL可以对单个用户、单个文件或目录进行r、w、x的权限设置，权限划分更加细化。</span></p><p><span>如下图所示，文件file.db的权限是rwxrwxr--，如果这个时候，来了一位新用户，这位新用户的权限配置要求是rw-，那么按照前面讲过的配置方法，应该如何来配置呢？无论是把这位新用户设为文件的拥有者，或者是用户组，或者其他人都不能满足这个权限配置要求。那么针对类似于这样的权限要求，需要单独针对新用户一个人进行配置权限，传统的Linux权限配置方法是无法实现的。</span></p><p><img src="./assets/image-20250331211948456.png" referrerpolicy="no-referrer" alt="image-20250331211948456"></p><p><span>针对上述情况，当需要单独为一个用户进行专门的权限设置时，就可以使用ACL来进行权限配置。</span></p><p><span>目前绝大多数的文件系统都支持ACL功能，包括JFS、XFS、EXT3、EXT4等。</span></p><p><span>红帽企业版9.1默认的文件系统就是XFS，默认是可以支持ACL功能的。 </span></p><p><span>设置ACL权限需要使用setfacl，getfacl两个命令，</span></p><p><span>用法如下： </span></p><p><span>getfacl 文件名  </span></p><p><span>setfacl [-bkRdmx] 参数 文件名 </span></p><p><span>各个选项的具体含义如下表所示：</span></p><figure class='table-figure'><table><thead><tr><th><strong><span>选项</span></strong></th><th style='text-align:left;' ><strong><span>功能</span></strong></th></tr></thead><tbody><tr><td><strong><span>-m</span></strong></td><td style='text-align:left;' ><span>设定ACL权限。如果是给用户设置ACL权限，参数则使用 &quot;u:用户名:权限&quot; 的格式，例如 setfacl -m u:user:rx /temp表示设定user用户对temp目录具有rx权限；如果是给予组ACL权限，参数则使用“g:组名:权限”格式，例如setfacl -m g:tgroup:rx /temp表示设定群tgroup对temp目录具有rx权限。</span></td></tr><tr><td><strong><span>-x</span></strong></td><td style='text-align:left;' ><strong><span>删除指定用户（参数使用 u:用户名）或群组（参数使用g:群组名）的ACL权限，例如setfacl -x u:user /temp表示删除user用户对temp目录的ACL权限。</span></strong></td></tr><tr><td><strong><span>-b</span></strong></td><td style='text-align:left;' ><strong><span>删除所有的 ACL 权限，例如 setfacl -b /temp表示删除有关temp目录的所有 ACL 权限。</span></strong></td></tr><tr><td><strong><span>-d</span></strong></td><td style='text-align:left;' ><strong><span>设定默认ACL权限，命令格式为”setfacl -m d:u:用户名:权限 文件名”（如果是群组，则使用d:g:群组名:权限），只对目录生效，指目录中新建立的文件拥有此默认权限，例如 setfacl -m d:u:user:rx /temp 表示 user 用户对temp目录中新建立的文件拥有rx权限。</span></strong></td></tr><tr><td><strong><span>-R</span></strong></td><td style='text-align:left;' ><span>递归设定ACL权限，指设定的ACL权限会对目录下的所有子文件生效，命令格式为”setfacl -m u:用户名:权限 -R 文件名”（群组使用g:群组名:权限），例如setfacl -m u:user:rx -R /temp表示user用户对已存在于temp目录中的子文件和子目录拥有rx权限。</span></td></tr><tr><td><strong><span>-k</span></strong></td><td style='text-align:left;' ><strong><span>删除默认 ACL 权限。</span></strong></td></tr></tbody></table></figure><p><span>实战：</span></p><h3 id='1）例题-1'><span>（1）例题 1</span></h3><p><span>针对单个用户设置acl 权限，如上图所示，假设有一个文件file.db权限为rwxrwxr--，那么针对新用户zhangsan的rw-权限要求，如何使用setfacl进行设置呢？</span></p><p><img src="./assets/carbon (38).png" referrerpolicy="no-referrer" alt="carbon (38)"></p><h3 id='2）例题-2'><span>（2）例题 2</span></h3><p><span>针对用户组设置acl 权限</span></p><p><span>【例题】setfacl也可以针对特定的用户组进行ACL权限配置。</span></p><p><span> 语法格式：setfacl -m g:用户组名:rwx 文件名</span></p><p><img src="./assets/carbon (39).png" referrerpolicy="no-referrer" alt="carbon (39)"></p><h3 id='3）mask-值的作用'><span>（3）mask 值的作用？</span></h3><p><span>【例题】首先设置mask的值，然后查看文件的真正的权限。</span></p><p><span>语法格式：setfacl -m m:rwx 文件名</span></p><p><img src="./assets/carbon (40).png" referrerpolicy="no-referrer" alt="carbon (40)"></p><p><span>上述题目中，虽然对于zhangsan用户来说，虽然其权限是user:zhangsan:rw-，但是因为mask的值为mask::r--，所以zhangsan的真正有效的权限只能是r--。</span></p><p><span>这就是mask值的作用，也就是说，可以通过设置mask的值，从而规定最大允许的权限，就能够避免不小心设置权限过大的问题。</span></p><p><span>但是在日常使用中，一般情况下，不需要修改mask的值。</span></p><h3 id='4）删除acl-权限'><span>（4）删除acl 权限</span></h3><p><img src="./assets/carbon (41).png" referrerpolicy="no-referrer" alt="carbon (41)"></p><p><span>上述例题分别演示如何针对某个用户删除acl 权限及删除一个文件的所有acl 权限。</span></p><h2 id='总结'><span>总结</span></h2><h3 id='1）权限总结'><span>（1）权限总结</span></h3><p><img src="./assets/image-20250331214125087.png" referrerpolicy="no-referrer" alt="image-20250331214125087"></p><h3 id='2）用户及权限总结'><span>（2）用户及权限总结</span></h3><p><img src="./assets/image-20250331214017542.png" referrerpolicy="no-referrer" alt="image-20250331214017542"></p><h2 id='随堂测试'><span>随堂测试</span></h2><p>&nbsp;</p></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script></body>
+</html>

@@ -1,0 +1,819 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+::marker {
+    font-size: 14px;
+}
+
+pre {
+	--select-text-bg-color: #36284e;
+	--select-text-font-color: #fff;
+}
+
+html {
+	font-size: 16px;
+	-webkit-font-smoothing: antialiased;
+}
+
+html, body {
+	background-color: #f3f2ee;
+	font-family: Arail,Microsoft YaHei;
+	color: #1f0909;
+	line-height: 1.5em;
+}
+
+
+#write {
+	max-width: 40em;
+}
+@media only screen and (min-width: 1000px) {
+	#write {max-width: 960px;}
+}
+
+
+@media only screen and (min-width: 1400px) {
+	#write {max-width: 1080px;}
+}
+
+@media only screen and (min-width: 1900px) {
+	#write {max-width: 1180px;}
+}
+
+ol li {
+	list-style-type: decimal;
+	list-style-position: outside;
+}
+ul li {
+	list-style-type: disc;
+	list-style-position: outside;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+blockquote,
+q {
+	quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: Microsoft YaHei;
+	padding-bottom: 0.3em;
+	border-bottom: 1px solid #d8dee4;
+	font-weight: bold;
+	margin-bottom: 1.5em;
+}
+h1 {
+	font-size: 30px;
+	/*30 / 16*/
+	line-height: 1.6em;
+	/* 48 / 30*/
+	margin-top: 2em;
+}
+h2{
+	font-size: 25px;
+	line-height: 1.15;
+	/*24 / 21*/
+	margin-top: 2.285714em;
+	/*48 / 21*/
+	margin-bottom: 1.15em;
+	/*24 / 21*/
+}
+h3 {
+	font-size: 20px;
+	/*21 / 16*/
+	line-height: 1.15;
+	/*24 / 21*/
+	margin-top: 2.285714em;
+	/*48 / 21*/
+	margin-bottom: 1.15em;
+	/*24 / 21*/
+}
+
+h4 {
+	font-size: 16px;
+	/*18 / 16*/
+	margin-top: 2.67em;
+	/*48 / 18*/
+}
+/* links */
+
+a {
+	text-decoration: none;
+	color: #065588;
+}
+a:hover,
+a:active {
+	text-decoration: underline;
+}
+/* block spacing */
+
+
+/* blockquote */
+
+blockquote {
+	border-left: 3px solid;
+	padding-left: 1em;
+}
+
+/* tables */
+.md-meta,.md-before, .md-after {
+	color:#999;
+}
+
+table {
+	margin-bottom: 1.5em;
+	/*24 / 16*/
+	font-size: 1em;
+	/* width: 100%; */
+}
+thead th,
+tfoot th {
+	padding: .25em .25em .25em .4em;
+	text-transform: uppercase;
+}
+th {
+	text-align: left;
+}
+td {
+	vertical-align: top;
+	padding: .5em .25em .5em .4em;
+}
+
+.md-fences {
+    color: #0079bb;
+}
+
+code {
+	color: #c7254e;
+	padding-left: 2px;
+	padding-right: 2px;
+	font-family: consolas;
+    border-radius: 4px;
+}
+
+pre,
+code,
+tt {
+	font-size: .875em;
+	line-height: 1.714285em;
+}
+
+
+p + ul,
+p + ol{
+	margin-top: .5em;
+}
+
+h3 + ul,
+h4 + ul,
+h5 + ul,
+h6 + ul,
+h3 + ol,
+h4 + ol,
+h5 + ol,
+h6 + ol {
+	margin-top: .5em;
+}
+
+li > ul,
+li > ol {
+	margin-top: inherit;
+	margin-bottom: 0;
+}
+
+li ol>li {
+	list-style-type: lower-alpha;
+}
+
+li li ol>li{
+	list-style-type: lower-roman;
+}
+
+h2,
+h3 {
+	margin-bottom: .75em;
+}
+hr {
+	border-top: none;
+	border-right: none;
+	border-bottom: 1px solid;
+	border-left: none;
+}
+h1 {
+	border-color: #c5c5c5;
+}
+blockquote {
+
+	border-color: #bababa;
+}
+
+blockquote ul,
+blockquote ol {
+	margin-left:0;
+}
+
+.ty-table-edit {
+	background-color: transparent;
+}
+thead {
+	background-color: #dadada;
+}
+tr:nth-child(even) {
+	background: #e8e7e7;
+}
+hr {
+	border-color: #c5c5c5;
+}
+.task-list{
+	padding-left: 1rem;
+}
+
+.md-task-list-item {
+	padding-left: 1.5rem;
+	list-style-type: none;
+}
+
+.md-task-list-item > input:before {
+	content: '\221A';
+	display: inline-block;
+	width: 1.25rem;
+  	height: 1.6rem;
+	vertical-align: middle;
+	text-align: center;
+	color: #ddd;
+	background-color: #F3F2EE;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before{
+	color: inherit;
+}
+
+#write pre.md-meta-block {
+	min-height: 1.875rem;
+	color: #555;
+	border: 0px;
+	background: transparent;
+	margin-top: -4px;
+	margin-left: 1em;
+	margin-top: 1em;
+}
+
+.md-image>.md-meta {
+	color: #9B5146;
+}
+
+.md-image>.md-meta{
+	font-family: Microsoft YaHei;
+}
+
+
+#write>h3.md-focus:before{
+	left: -1.5rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h4.md-focus:before{
+	left: -1.5rem;
+	top: .25rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h5.md-focus:before{
+	left: -1.5rem;
+	top: .0.3125rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h6.md-focus:before{
+	left: -1.5rem;
+	top: 0.3125rem;
+	color:#999;
+	border-color:#999;
+}
+
+.md-toc:focus .md-toc-content{
+	margin-top: 19px;
+}
+
+.md-toc-content:empty:before{
+	color: #065588;
+}
+.md-toc-item {
+	color: #065588;
+}
+
+#write div.md-toc-tooltip {
+	background-color: #f3f2ee;
+}
+
+#typora-sidebar {
+	background-color: #f3f2ee;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+  	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+}
+
+.pin-outline #typora-sidebar {
+	background: inherit;
+	box-shadow: none;
+	border-right: 1px dashed;
+}
+
+.pin-outline #typora-sidebar:hover .outline-title-wrapper {
+	border-left:1px dashed;
+}
+
+.outline-item:hover {
+  background-color: #dadada;
+  border-left: 28px solid #dadada;
+  border-right: 18px solid #dadada;
+}
+
+.typora-node .outline-item:hover {
+  	border-right: 28px solid #dadada;
+}
+
+.outline-expander:before {
+  content: "\f105";
+  font-family: FontAwesome;
+  font-size:12px;
+  top: 1px;
+}
+
+.outline-expander:hover:before,
+.outline-item-open>.outline-item>.outline-expander:before {
+  content: "\f107";
+}
+
+.modal-content {
+	background-color: #f3f2ee;
+}
+
+.auto-suggest-container ul li {
+	list-style-type: none;
+}
+
+/** UI for electron */
+
+.megamenu-menu,
+#top-titlebar, #top-titlebar *,
+.megamenu-content {
+	background: #f3f2ee;
+	color: #1f0909;
+}
+
+.megamenu-menu-header {
+	border-bottom: 1px dashed #202B33;
+}
+
+.megamenu-menu {
+	box-shadow: none;
+	border-right: 1px dashed;
+}
+
+header, .context-menu, .megamenu-content, footer {
+	font-family: Microsoft YaHei;
+	color: #1f0909;
+}
+
+#megamenu-back-btn {
+	color: #1f0909;
+	border-color: #1f0909;
+}
+
+.megamenu-menu-header #megamenu-menu-header-title:before {
+	color: #1f0909;
+}
+
+.megamenu-menu-list li a:hover, .megamenu-menu-list li a.active {
+	color: inherit;
+	background-color: #e8e7df;
+}
+
+.long-btn:hover {
+	background-color: #e8e7df;
+}
+
+#recent-file-panel tbody tr:nth-child(2n-1) {
+    background-color: transparent !important;
+}
+
+.megamenu-menu-panel tbody tr:hover td:nth-child(2) {
+    color: inherit;
+}
+
+.megamenu-menu-panel .btn {
+	background-color: #D2D1D1;
+}
+
+.btn-default {
+	background-color: transparent;
+}
+
+.typora-sourceview-on #toggle-sourceview-btn,
+.ty-show-word-count #footer-word-count {
+	background: #c7c5c5;
+}
+
+#typora-quick-open {
+    background-color: inherit;
+}
+
+.md-diagram-panel {
+	margin-top: 8px;
+}
+
+.file-list-item-file-name {
+	font-weight: initial;
+}
+
+.file-list-item-summary {
+	opacity: 1;
+}
+
+.file-list-item {
+	color: #777;
+}
+
+.file-list-item.active {
+	background-color: inherit;
+	color: black;
+}
+
+.ty-side-sort-btn.active {
+	background-color: inherit;
+}
+
+.file-list-item.active .file-list-item-file-name  {
+	font-weight: bold;
+}
+
+.file-list-item{
+    opacity:1 !important;
+}
+
+.file-library-node.active>.file-node-background{
+	background-color: rgba(32, 43, 51, 0.63);
+	background-color: var(--active-file-bg-color);
+}
+
+.file-tree-node.active>.file-node-content{
+	color: white;
+	color: var(--active-file-text-color);
+}
+
+.md-task-list-item>input {
+	margin-left: -1.7em;
+	margin-top: calc(1rem - 12px);
+}
+
+input {
+	border: 1px solid #aaa;
+}
+
+.megamenu-menu-header #megamenu-menu-header-title,
+.megamenu-menu-header:hover, 
+.megamenu-menu-header:focus {
+	color: inherit;
+}
+
+.dropdown-menu .divider {
+	border-color: #e5e5e5;
+	opacity: 1;
+}
+
+/* https://github.com/typora/typora-issues/issues/2046 */
+.os-windows-7 strong,
+.os-windows-7 strong  {
+	font-weight: 760;
+}
+
+.ty-preferences .btn-default {
+	background: transparent;
+}
+
+.ty-preferences .window-header {
+	border-bottom: 1px dashed #202B33;
+	box-shadow: none;
+}
+
+#sidebar-loading-template, #sidebar-loading-template.file-list-item {
+	color: #777;
+}
+
+.searchpanel-search-option-btn.active {
+	background: #777;
+	color: white;
+}
+
+
+
+/**
+    Name: IntelliJ IDEA darcula theme
+    From IntelliJ IDEA by JetBrains
+    代码高亮：IDEA主题样式
+ */
+
+.cm-s-inner  { font-family: Consolas, Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, serif;}
+.cm-s-inner.CodeMirror { background: #2B2B2B; color: #A9B7C6; padding: 5px;}
+
+.cm-s-inner span.cm-meta { color: #BBB529; }
+.cm-s-inner span.cm-number { color: #6897BB; }
+.cm-s-inner span.cm-keyword { color: #CC7832; line-height: 1em; font-weight: bold; }
+.cm-s-inner span.cm-def { color: #A9B7C6; font-style: italic; }
+.cm-s-inner span.cm-variable { color: #A9B7C6; }
+.cm-s-inner span.cm-variable-2 { color: #A9B7C6; }
+.cm-s-inner span.cm-variable-3 { color: #9876AA; }
+.cm-s-inner span.cm-type { color: #AABBCC; font-weight: bold; }
+.cm-s-inner span.cm-property { color: #FFC66D; }
+.cm-s-inner span.cm-operator { color: #A9B7C6; }
+.cm-s-inner span.cm-string { color: #6A8759; }
+.cm-s-inner span.cm-string-2 { color: #6A8759; }
+.cm-s-inner span.cm-comment { color: #999; }
+.cm-s-inner span.cm-link { color: #CC7832; }
+.cm-s-inner span.cm-atom { color: #CC7832; }
+.cm-s-inner span.cm-error { color: #BC3F3C; }
+.cm-s-inner span.cm-tag { color: #bea063; font-weight: bold; font-style: italic; text-decoration: underline; }
+.cm-s-inner span.cm-attribute { color: #6897bb; }
+.cm-s-inner span.cm-qualifier { color: #6A8759; }
+.cm-s-inner span.cm-bracket { color: #A9B7C6; }
+.cm-s-inner span.cm-builtin { color: #FF9E59; }
+.cm-s-inner span.cm-special { color: #FF9E59; }
+.cm-s-inner span.cm-matchhighlight { color: #FFFFFF; background-color: rgba(50, 89, 48, .7); font-weight: normal;}
+.cm-s-inner span.cm-searching { color: #FFFFFF; background-color: rgba(61, 115, 59, .7); font-weight: normal;}
+
+.cm-s-inner .CodeMirror-cursor { border-left: 1px solid #A9B7C6; }
+.cm-s-inner .CodeMirror-activeline-background { background: #323232; }
+.cm-s-inner .CodeMirror-gutters { background: #313335; border-right: 1px solid #313335; }
+.cm-s-inner .CodeMirror-guttermarker { color: #FFEE80; }
+.cm-s-inner .CodeMirror-guttermarker-subtle { color: #D0D0D0; }
+.cm-s-inner .CodeMirrir-linenumber { color: #606366; }
+.cm-s-inner .CodeMirror-matchingbracket { background-color: #3B514D; color: #FFEF28 !important; font-weight: bold; }
+
+.cm-s-inner div.CodeMirror-selected { background: #214283; }
+
+.CodeMirror-hints.darcula {
+  font-family: Consolas, 'Courier New', monospace;
+  color: #9C9E9E;
+  background-color: #3B3E3F !important;
+}
+
+.CodeMirror-hints.darcula .CodeMirror-hint-active {
+  background-color: #494D4E !important;
+  color: #9C9E9E !important;
+}
+
+
+
+/*大纲紧凑*/
+.outline-item {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.outline-h1{
+	font-size: 14px !important;
+}
+
+.outline-h3,.outline-h4{
+	font-size: 13px !important;
+}
+.outline-expander {
+    height: 1rem !important;
+}
+li.md-list-item {
+    line-height: 120%;
+}
+
+
+
+
+ .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
+</style><title>Linux漫谈系列--用户管理</title>
+</head>
+<body class='typora-export os-windows typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#linux漫谈系列--用户管理">Linux漫谈系列--用户管理</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#0用户分类">0、用户分类</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1用户相关信息有哪些">1、用户相关信息有哪些？</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2密码是如何加密及存储的呢">2、密码是如何加密及存储的呢？</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1）密码放在哪儿了">（1）密码放在哪儿了？</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1-文件结构与字段说明">1. ‌<strong>文件结构与字段说明</strong>‌</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2-时间字段的计算规则">2. ‌<strong>时间字段的计算规则</strong>‌</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#3-有趣的chage-命令">3. ‌<strong>有趣的chage 命令</strong>‌</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2）linux-用户口令加密详解">（2）Linux 用户口令加密详解</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#0有趣的密码">0、有趣的密码</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1详解密码字段">1、详解密码字段</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2openssl-介绍">2、OpenSSL 介绍</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#3实战简单加密">3、实战简单加密</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#4破解一下">4、破解一下</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#5实战加盐哈希">5、实战加盐哈希</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#6实战多轮次加盐">6、实战多轮次加盐</a></div><ul class="outline-children"></ul></li></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#3多用户如何管理">3、多用户如何管理</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1）用户组的概念">（1）用户组的概念</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2）用户组的信息在哪里">（2）用户组的信息在哪里？</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#3）有个疑问当一个用户属于多个用户组时究竟有什么用">（3）有个疑问？当一个用户属于多个用户组时？究竟有什么用？</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#4）用户组也可以设置密码">（4）用户组也可以设置密码</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#4小结一下">4、小结一下</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#5深入探究一下背后的秘密">5、深入探究一下背后的秘密</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1）第一个etcdefaultuseradd">（1）第一个/etc/default/useradd </a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2）第二个-etclogindefs">（2）第二个 /etc/login.defs </a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#3）第三个etcskel">（3）第三个<strong>/etc/skel/*</strong></a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#6需要掌握的命令">6、需要掌握的命令</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1）和用户管理有关的-4-个">（1）和用户管理有关的 4 个</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2）和用户组管理有关的6个">（2）和用户组管理有关的6个</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#7用户提权方法">7、用户提权方法</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#第一种直接使用su-命令">第一种：直接使用su 命令</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#第二种修改etcsudoers-文件">第二种：修改/etc/sudoers 文件</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#第三种让用户加入-wheel-组">第三种：让用户加入 wheel 组。</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#历史背景"><strong>历史背景</strong></a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#8对于爱捣乱的用户如何禁止登录">8、对于爱捣乱的用户，如何禁止登录</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#9来个综合实战">9、来个综合实战</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#例题1批量创建用户">例题1：批量创建用户</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#例题-2批量删除用户">例题 2：批量删除用户</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#10总结">10、总结</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#谜语答案"><strong>谜语答案</strong></a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#随堂测试">随堂测试</a></div><ul class="outline-children"></ul></li></ul></li></div></div><div id='write'  class=''><h1 id='linux漫谈系列--用户管理'><span>Linux漫谈系列--用户管理</span></h1><h2 id='0用户分类'><span>0、用户分类</span></h2><p><img src="./assets/image-20250327093604069.png" referrerpolicy="no-referrer" alt="image-20250327093604069"></p><p><span>用户可以分三类：</span></p><ul><li><span>超级用户: 拥有一切权限。</span></li><li><span>系统用户或者叫伪用户：这类用户只有用户名，没有密码，不能登录系统，一般是各类服务使用。</span></li><li><span>普通用户：需要配置密码后，可以登录系统，但是权限受限制。</span></li></ul><p><img src="./assets/image-20250327093714527.png" referrerpolicy="no-referrer" alt="image-20250327093714527"></p><p><img src="./assets/image-20250327093827107.png" referrerpolicy="no-referrer" alt="image-20250327093827107"></p><p><span>识别用户的唯一依据是用户 ID，称为 UID。每个用户的 UID 都是唯一的，是用户身份的唯一标识，而不是用户名字。</span></p><p><span>那么系统里面的用户究竟有多少个，每个用户的信息都有啥？</span></p><p><span>和用户相关的信息都保存在/etc/passwd 文件中。</span></p><h2 id='1用户相关信息有哪些'><span>1、用户相关信息有哪些？</span></h2><p><span>认识一下 Linux 系统中一个重要的文件/etc/passwd.</span></p><p><span>以root 用户为例：</span></p><p><img src="./assets/截屏2025-03-27 17.30.29.png" referrerpolicy="no-referrer" alt="截屏2025-03-27 17.30.29"></p><p><span>上图中不同的颜色表示不同的用户分类。</span></p><p><span>结合一下 shell 编程的知识，可以编写一个 shell 程序，按照三种不同用户分类，统计一下每个类别的用户有几个，怎么写呢？</span></p><p>&nbsp;</p><p><img src="./assets/carbon.png" alt="carbon" style="zoom:67%;" /></p><p><span>上述程序运行结果如下：</span></p><p><img src="./assets/carbon (1).png" alt="carbon (1)" style="zoom:67%;" /></p><h2 id='2密码是如何加密及存储的呢'><span>2、密码是如何加密及存储的呢？</span></h2><h3 id='1）密码放在哪儿了'><span>（1）密码放在哪儿了？</span></h3><p><span>另外一个重要的文件/etc/shadow，放的是所有用户的密码。</span></p><p><span>以zhangsan 用户为例说明密码存在哪里？</span></p><p><img src="./assets/截屏2025-03-27 17.48.49.png" alt="截屏2025-03-27 17.48.49" style="zoom:67%;" /></p><p><span>咱们使用deepseek 来解读一下：</span></p><hr /><p><span>以下是 ‌</span><strong><span>/etc/shadow</span></strong><span>‌ 文件格式的详细说明，基于Linux系统中用户账户安全管理的核心设计。</span></p><hr /><h4 id='1-文件结构与字段说明'><span>1. ‌</span><strong><span>文件结构与字段说明</span></strong><span>‌</span></h4><p><span>每行对应一个用户账户，由9个冒号分隔的字段组成，格式如下：</span>
+<code>username:password:last_change:min_days:max_days:warn_days:inactive_days:expire_date:reserved</code><span>‌</span></p><figure><table><thead><tr><th><span>字段序号</span></th><th><span>字段名称</span></th><th><span>描述</span></th></tr></thead><tbody><tr><td><span>1</span></td><td><code>username</code></td><td><span>用户名，与</span><code>/etc/passwd</code><span>中的用户名一致‌。</span></td></tr><tr><td><span>2</span></td><td><code>password</code></td><td><span>‌</span><strong><span>加密后的密码</span></strong><span>‌：使用哈希算法（如SHA-256、SHA-512）加密的字符串；</span><code>!</code><span>或</span><code>*</code><span>表示账户被锁定；空字段表示无密码。</span></td></tr><tr><td><span>3</span></td><td><code>last_change</code></td><td><span>密码最后修改时间，以距离1970-01-01的天数表示‌。</span></td></tr><tr><td><span>4</span></td><td><code>min_days</code></td><td><span>密码修改最小间隔天数（0表示可随时修改）‌37。</span></td></tr><tr><td><span>5</span></td><td><code>max_days</code></td><td><span>密码有效期（如99999表示永不过期）‌。</span></td></tr><tr><td><span>6</span></td><td><code>warn_days</code></td><td><span>密码过期前警告天数（提醒用户修改密码）‌。</span></td></tr><tr><td><span>7</span></td><td><code>inactive_days</code></td><td><span>密码过期后账户宽限天数（超时则锁定账户）‌。</span></td></tr><tr><td><span>8</span></td><td><code>expire_date</code></td><td><span>账户绝对过期时间（距离1970-01-01的天数，超时后账户失效）‌。</span></td></tr><tr><td><span>9</span></td><td><code>reserved</code></td><td><span>保留字段，未使用‌。</span></td></tr></tbody></table></figure><hr /><h4 id='2-时间字段的计算规则'><span>2. ‌</span><strong><span>时间字段的计算规则</span></strong><span>‌</span></h4><ul><li><span>‌</span><strong><span>last_change</span></strong><span>‌、‌</span><strong><span>expire_date</span></strong><span>‌ 等时间字段均以‌</span><strong><span>Unix纪元（1970-01-01）为起点</span></strong><span>‌的天数表示‌。</span></li><li><span>例如：</span><code>last_change=19300</code><span> 表示密码最后一次修改时间为1970年后的第19300天（约2023年）‌。</span></li></ul><hr /><p><em><strong><u><span>Unix 纪元（1970年1月1日世界协调时UTC零点）</span></u></strong></em></p><p><span>例如：</span></p><p><strong><span>举例：密码过期时间的计算(1970年1月1日以来的天数)</span></strong></p><p><strong><span>/root/linux_sh/ch7/user_ex4.sh</span></strong></p><p><img src="./assets/carbon (3).png" alt="carbon (3)" style="zoom:67%;" /></p><p><span>那么如何计算unix 纪元开始的秒和日期的计算呢？</span></p><p><span>接着上图，计算如下：</span></p><p><img src="./assets/carbon (4).png" alt="carbon (4)" style="zoom:67%;" /></p><p><span>看懂了么？</span></p><h4 id='3-有趣的chage-命令'><span>3. ‌</span><strong><span>有趣的chage 命令</span></strong><span>‌</span></h4><ul><li><span>‌第一种方式：</span><strong><span>锁定账户</span></strong><span>‌：在密码字段前添加</span><code>!</code><span>或</span><code>*</code><span>（如</span><code>!$6$...</code><span>）‌。</span></li><li><span>‌第二种方式：</span><strong><span>强制密码过期</span></strong><span>‌：设置</span><code>max_days</code><span>为有限天数，并配合</span><code>warn_days</code><span>提醒用户‌。</span></li></ul><p><span>可以使用chage命令设置用户密码的过期时间。一种特殊情况是设置立刻过期。用户必须立刻修改密码。</span></p><p><span>chage -d 0 username  </span></p><p><span>这种情况适合管理员管理用户的密码。</span></p><p><span>比如，管理一个班级的学生，每一个同学的初始密码都是123456，然后通过这样的设置后，每个同学第一次登录后，必须修改自己的密码，这样便于管理，并且增强了用户安全和隐私。</span></p><p><img src="./assets/carbon (5).png" alt="carbon (5)" style="zoom:67%;" /></p><p><span>/etc/shadow文件实现了用户密码的安全存储与生命周期管理，是Linux系统账户安全的核心机制‌。</span></p><h3 id='2）linux-用户口令加密详解'><span>（2）Linux 用户口令加密详解</span></h3><p><span>玩一玩Linux 如何加密的！</span></p><h4 id='0有趣的密码'><span>0、有趣的密码</span></h4><p><img src="./assets/截屏2025-03-28 18.09.08.png" alt="截屏2025-03-28 18.09.08" style="zoom:50%;" /></p><p><span>猜一猜：这里的密码都是哪些诗句？</span></p><p><strong><span>答案：参见最后一节</span></strong></p><h4 id='1详解密码字段'><span>1、详解密码字段</span></h4><p><span>比如zhangsan 用户的密码在注册时候，明文是123456，Linux 在存储到/etc/shadow 文件的时候，是明文存储的？还是加密存储的？我们怎么知道采用了什么加密算法呢？</span></p><p><span>以前的Linux 采用的是这种方式：加盐哈希（分为三个字段）</span></p><p><span>现在新版本的 Linux 采用的是这种方式：（分为四个字段，进行多轮次哈希）</span></p><p><img src="./assets/截屏2025-03-28 11.41.13.png" referrerpolicy="no-referrer" alt="截屏2025-03-28 11.41.13"></p><p><span>解释三个疑惑：</span></p><p><span>第一个：如何知道是哪种加密算法？如下图所示：</span></p><p><img src="./assets/截屏2025-03-27 18.05.25.png" referrerpolicy="no-referrer" alt="截屏2025-03-27 18.05.25"></p><p><span>第二个：啥是加盐哈希？</span></p><p><img src="./assets/截屏2025-03-28 08.41.56.png" alt="截屏2025-03-28 08.41.56" style="zoom:67%;" /></p><p><span>第三个：为啥新版本 Linux 要多轮次哈希？</span></p><p><span>在密码学中，</span><strong><span>轮次（rounds）</span></strong><span> 是指哈希算法重复执行的次数。这是现代密码存储中的重要安全机制。</span></p><p><img src="./assets/截屏2025-03-28 11.55.35.png" referrerpolicy="no-referrer" alt="截屏2025-03-28 11.55.35"></p><p>&nbsp;</p><p><span>实战一下：</span></p><p><span>实战之前，讲点基础知识：</span></p><h4 id='2openssl-介绍'><span>2、OpenSSL 介绍</span></h4><p><span>OpenSSL 是一套开源的、跨平台的密码学库和工具集，广泛应用于各种网络服务和应用程序中，以实现安全的网络通信。以下是关于 OpenSSL 的详细解析： </span></p><p><span>核心功能如下：</span></p><ul><li><span>加密算法支持 OpenSSL 提供了丰富的对称、非对称加密算法实现，包括但不限于： 对称加密：AES（不同模式）、Blowfish、CAST、DES、IDEA、RC2、RC4、Triple DES等。 非对称加密：RSA、DSA、ECDSA、Ed25519、Ed448等。 哈希函数：MD5、SHA-1、SHA-2（SHA-224、SHA-256、SHA-384、SHA-512）、SHA-3、RIPEMD等。 消息认证码（MACs）：HMAC、CMAC等。 </span></li><li><span>SSL/TLS 支持 协议实现：OpenSSL 实现了 SSLv3、TLS 1.0、TLS 1.1、TLS 1.2、TLS 1.3 等多个版本的协议，用于在互联网上建立安全的、加密的数据传输通道。 证书管理：支持证书的生成、签署、验证、吊销、转换格式等操作。 密钥交换：支持多种密钥交换算法，如 RSA、Diffie-Hellman、ECDH、FFDHE、PSK等。 密码套件：组合使用上述加密、认证和密钥交换算法，形成可供 SSL/TLS 协商的密码套件列表。</span></li><li><span>工具集 OpenSSL 提供了一系列命令行工具，用于执行各种密码学相关任务，如： openssl：多功能工具，能够生成密钥、证书请求、自签名证书，进行加密解密、哈希计算、数字签名验证、证书链验证、协议握手模拟等。</span></li></ul><p>&nbsp;</p><h4 id='3实战简单加密'><span>3、实战简单加密</span></h4><p><span>Linux 对于明文 123456 的加密分为三种情况：</span></p><ul><li><span>第一种是直接加密linux_sh/ch7/jiami01.sh</span></li></ul><p><img src="./assets/carbon (7).png" alt="carbon (7)" style="zoom:67%;" /></p><p><span>运行结果为：</span></p><p><img src="./assets/carbon (8).png" alt="carbon (8)" style="zoom:67%;" /></p><p><span>可以看出hash加密算法的特点是:明文一样，密文就一样，这样黑客就可以采用暴力破解的方法来进行攻击。</span></p><p><span>这也是不加盐哈希加密算法的最大的弱点。</span></p><h4 id='4破解一下'><span>4、破解一下</span></h4><p><span>常用的暴力破解的方法有：字典攻击，查表法。</span></p><p><span>好玩的破解：自己动手试一试，打开下面的网站，把生成的密文输入进行，破解出对应的明文。</span></p><p><a href='https://www.dcode.fr/sha512-hash?#f0' target='_blank' class='url'>https://www.dcode.fr/sha512-hash?#f0</a><span>  sha512破解  知道了密文反过来查询明文的网站。</span></p><p>&nbsp;</p><h4 id='5实战加盐哈希'><span>5、实战加盐哈希</span></h4><ul><li><span>第二种是采用加盐哈希的方式加密/root/linux_sh/ch7/jiami02.sh</span></li></ul><p><img src="./assets/carbon (9).png" alt="carbon (9)" style="zoom:67%;" /></p><p><span>运行结果如下：</span></p><p><img src="./assets/carbon (11).png" alt="carbon (11)" style="zoom:67%;" /></p><h4 id='6实战多轮次加盐'><span>6、实战多轮次加盐</span></h4><ul><li><span>第三种是采用多轮次加盐哈希的方式加密</span></li></ul><p><img src="./assets/carbon (12).png" alt="carbon (12)" style="zoom:67%;" /></p><p><span>程序运行结果为：</span></p><p><img src="./assets/carbon (13).png" alt="carbon (13)" style="zoom:67%;" /></p><p><span>这里指定了盐，指定了加密的轮次。这也是最新版的Linux默认的加密方式。</span></p><p>&nbsp;</p><h2 id='3多用户如何管理'><span>3、多用户如何管理</span></h2><h3 id='1）用户组的概念'><span>（1）用户组的概念</span></h3><p><span>使用分组的方式进行管理。也就是系统里面有很多组，你可以选择加入哪个组？加入不同的组意味着权限不同。</span></p><p><span>当我们在系统里面新建一个用户的时候，默认加入哪个组呢？</span></p><p><span>规则是这样的：当新建一个用户zhangsan 的时候，默认加入的是随着新建的zhangsan用户，会自动新建一个名字叫做zhangsan 的用户组，默认该用户加入的是和自己名字一样的用户组。</span></p><p><img src="./assets/用户管理.png" alt="用户管理" style="zoom: 50%;" /></p><p><span>识别用户组的唯一标识是 GID。</span></p><p><span>那么如何查看系统里面有多少个组，以及组的 GID 都是啥呢？</span></p><p><span>所有有关组的详细的信息都保存在/etc/group 文件中。</span></p><h3 id='2）用户组的信息在哪里'><span>（2）用户组的信息在哪里？</span></h3><p><span>/etc/group</span></p><p><img src="./assets/截屏2025-03-28 16.11.32.png" alt="截屏2025-03-28 16.11.32" style="zoom:67%;" /></p><h3 id='3）有个疑问当一个用户属于多个用户组时究竟有什么用'><span>（3）有个疑问？当一个用户属于多个用户组时？究竟有什么用？</span></h3><p><span>当一个用户属于多个用户组时，同时拥有了多个用户组的权限。</span></p><p><span>初始组和有效组的概念。</span></p><p><img src="./assets/截屏2025-03-28 16.23.29.png" alt="截屏2025-03-28 16.23.29" style="zoom:67%;" /></p><p><span>初始组：新建用户的时候，添加的同名的组。</span></p><p><span>可以使用： usermod  -aG  新组   用户名，把用户添加进行新的组。这样一个用户就属于多个组。但这是只有一个组称为有效组，其影响是当该用户新建文件的时候，该文件的所属组是哪一个。</span></p><p><span>可以使用命令： newgrp 命令来改变用户的有效组。</span></p><p><img src="./assets/截屏2025-03-28 16.29.24.png" alt="截屏2025-03-28 16.29.24" style="zoom:67%;" /></p><h3 id='4）用户组也可以设置密码'><span>（4）用户组也可以设置密码</span></h3><p><span>/etc/gshadow 文件格式：</span></p><p><img src="./assets/截屏2025-03-28 16.30.14.png" alt="截屏2025-03-28 16.30.14" style="zoom:67%;" /></p><p><span>用户组密码实际中较少使用。</span></p><h2 id='4小结一下'><span>4、小结一下</span></h2><p><img src="./assets/Linux用户.png" alt="Linux用户" style="zoom:50%;" /></p><h2 id='5深入探究一下背后的秘密'><span>5、深入探究一下背后的秘密</span></h2><p><span>影响用户及用户组默认行为的三个文件。</span></p><ul><li><strong><span>/etc/default/useradd     </span></strong></li><li><strong><span>/etc/login.defs   </span></strong></li><li><strong><span>/etc/skel/*</span></strong></li></ul><h3 id='1）第一个etcdefaultuseradd'><span>（1）第一个/etc/default/useradd </span></h3><p><img src="./assets/carbon (14).png" alt="carbon (14)" style="zoom:67%;" /></p><h3 id='2）第二个-etclogindefs'><span>（2）第二个 /etc/login.defs </span></h3><p><strong><span>该文件规定了用户和用户组的各种默认设置。</span></strong></p><p><span>/etc/login.defs 是一个在类 Unix 系统（如 Linux、Unix 或 BSD）中用于定义系统范围内的 用户账户和密码管理策略的配置文件。</span></p><p><span>它包含了创建新用户时的默认设置， 以及一些全局性的账户和密码相关限制。 </span></p><p><span>以下是对 /etc/login.defs 文件中常见配置选项的详细说明： </span></p><ul><li><span>用户ID和用户组ID UID_MIN: 最小用户 ID（User ID），新创建的非特权用户账户的 UID 应该在这个值以上。 </span></li><li><span>UID_MAX: 最大用户 ID，非特权用户账户的 UID 应该在这个值以下。</span></li><li><span>GID_MIN: 最小组 ID（Group ID），新建的非特权组的 GID 应该在这个值以上。</span></li><li><span>GID_MAX: 最大组 ID，非特权组的 GID 应该在这个值以下。 </span></li><li><span>密码策略 PASS_MAX_DAYS: 密码有效期的最大天数。超过这个天数后，系统会要求用户更改密码。 </span></li><li><span>PASS_MIN_DAYS: 密码更改后，必须等待的最小天数才能再次更改密码。 </span></li><li><span>PASS_MIN_LEN: 密码的最小长度。设置此值可以强制用户选择足够复杂的密码。 </span></li><li><span>PASS_WARN_AGE: 在密码到期前多少天开始提醒用户更改密码。 </span></li><li><span>账户管理 CREATE_HOME: 是否在创建新用户时自动为其建立家目录。值为 yes 或 no。 </span></li><li><span>USERGROUPS_ENAB: 是否启用用户私有初始组（用户名与组名相同）。值为 yes 或 no。 如果启用，新用户创建时会自动创建与其同名的组，并将其设为主组。 </span></li><li><span>账户过期和锁定 ENCRYPT_METHOD: 指定系统使用的密码加密算法，如 DES、MD5、SHA-256、SHA-512 或 bcrypt。 </span></li><li><span>INACTIVE: 用户密码过期后，账户在多少天内仍可登录但必须更改密码，超期后账户将被锁定。 </span></li><li><span>MAX_MEMBERS_PER_GROUP: 一个组中允许的最大成员数量。 </span></li><li><span>其他设置 UMASK: 新建用户时默认的 umask 值，影响用户创建文件和目录时的默认权限。</span></li></ul><p><strong><span>比如Linux用户密码加密为什么采用sha512算法，就在这个文件中指定。</span></strong></p><p><img src="./assets/carbon (15).png" alt="carbon (15)" style="zoom:67%;" /></p><h3 id='3）第三个etcskel'><span>（3）第三个</span><strong><span>/etc/skel/*</span></strong></h3><p><span>主要是三个文件。</span></p><p><img src="./assets/carbon (16).png" alt="carbon (16)" style="zoom:67%;" /></p><p><span>当在系统中新建一个用户的时候，系统会自动把/etc/skel/目录在的文件复制到/home/新用户名/目录下。以便每个用户都可以自定义自己的环境。</span></p><h2 id='6需要掌握的命令'><span>6、需要掌握的命令</span></h2><h3 id='1）和用户管理有关的-4-个'><span>（1）和用户管理有关的 4 个</span></h3><p><img src="./assets/image-20250328170457400.png" alt="image-20250328170457400" style="zoom:67%;" /></p><h3 id='2）和用户组管理有关的6个'><span>（2）和用户组管理有关的6个</span></h3><p><img src="./assets/用户组.png" alt="用户组" style="zoom:50%;" /></p><h2 id='7用户提权方法'><span>7、用户提权方法</span></h2><p><span>提权三种方法：</span></p><p><span>（1）su   </span></p><p><span>（2）sudo</span></p><p><span>（3）加入wheel组</span></p><h3 id='第一种直接使用su-命令'><span>第一种：直接使用su 命令</span></h3><p><img src="./assets/carbon (18).png" alt="carbon (18)" style="zoom:67%;" /></p><p><span>缺点是切换为root 用户时，必须要知道 root 用户的密码才可以。不安全，也不现实。</span></p><h3 id='第二种修改etcsudoers-文件'><span>第二种：修改/etc/sudoers 文件</span></h3><p><img src="./assets/carbon (17).png" alt="carbon (17)" style="zoom:67%;" /></p><p><img src="./assets/截屏2025-03-28 17.23.28.png" alt="截屏2025-03-28 17.23.28" style="zoom:67%;" /></p><p><span>一但一个用户拥有的sudo 权限，就可以执行超出其权限范围以外的事情了。并且此时他不需要知道 root 用户的密码。但是要注意一定要合理的赋予用户权限。</span></p><h3 id='第三种让用户加入-wheel-组'><span>第三种：让用户加入 wheel 组。</span></h3><p><span>该用户加入 wheel 组以后，就拥有了 wheel 组的权限。</span></p><h3 id='历史背景'><strong><span>历史背景</span></strong></h3><p><span>wheel组名称起源于BSD系统，原意为&quot;big wheel&quot;（大人物），现成为类Unix系统中管理权限分配的标准化机制。现代Linux系统通过PAM模块和sudoers文件实现该功能。</span></p><p><em><span>在一些Linux发行版中，如Red Hat、CentOS和Fedora，wheel组的成员默认可以获得管理员权限。</span></em></p><p><img src="./assets/carbon (19).png" alt="carbon (19)" style="zoom:67%;" /></p><p><span>明白三种提权方式的区别了么？</span></p><h2 id='8对于爱捣乱的用户如何禁止登录'><span>8、对于爱捣乱的用户，如何禁止登录</span></h2><p><img src="./assets/carbon (20).png" alt="carbon (20)" style="zoom:67%;" /></p><p><span>学废了么？</span></p><h2 id='9来个综合实战'><span>9、来个综合实战</span></h2><h3 id='例题1批量创建用户'><span>例题1：批量创建用户</span></h3><p><span>user1.txt  sh07.sh程序会依据user1.txt里面提供的用户名和密码批量创建用户。</span></p><p><span>user1.txt 是一个普通文本文件。保存了你想要批量创建的用户名和密码。（用户名和密码之间有空格）</span></p><p><span>test_user1 123456</span>
+<span>test_user2 123456</span></p><p><span>sh07 程序的内容如下：</span></p><p><img src="./assets/carbon (21).png" alt="carbon (21)" style="zoom:50%;" /></p><p><span>程序运行结果如下：</span></p><p><img src="./assets/carbon (22).png" alt="carbon (22)" style="zoom:50%;" /></p><h3 id='例题-2批量删除用户'><span>例题 2：批量删除用户</span></h3><p><span>user1.txt   sh08.sh 依据user1.txt里面提供的用户名批量清除上面创建的用户。</span></p><p><span>sh08.sh程序的源码如下：</span></p><p><img src="./assets/carbon (23).png" alt="carbon (23)" style="zoom:50%;" /></p><p><span>运行结果如下：</span></p><p><img src="./assets/carbon (24).png" alt="carbon (24)" style="zoom:50%;" /></p><p><span>上述程序就是一个用户管理的典型的应用。</span></p><h2 id='10总结'><span>10、总结</span></h2><p><img src="./assets/总结.png" alt="总结" style="zoom:50%;" /></p><h2 id='谜语答案'><strong><span>谜语答案</span></strong></h2><p><span>答案：</span></p><p><span>（1）清明时节雨纷纷，路上行人欲断魂</span></p><p><span>（2）会当凌绝顶，一览众山小</span></p><p><span>（3）竹外桃花三两只，春江水暖鸭先知</span></p><p><span>（4）窗前明月光，疑是地上霜</span></p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h2 id='随堂测试'><span>随堂测试</span></h2><p><img src="Linux%E6%BC%AB%E8%B0%88%E7%B3%BB%E5%88%97--%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86.assets/%E3%80%8ALinux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E5%AE%89%E5%85%A8%E3%80%8B202503%E7%AC%AC4%E6%AC%A1%E9%9A%8F%E5%A0%82%E6%B5%8B%E8%AF%95.png" alt="《Linux操作系统与安全》202503第4次随堂测试" style="zoom: 67%;" /></p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script></body>
+</html>
