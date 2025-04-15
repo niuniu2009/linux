@@ -1,0 +1,40 @@
+RAID磁盘阵列实战：
+
+一、准备工作：
+
+（1）在虚拟机中添加一块硬盘（sdc）。
+（2）使用  gparted （ fdsik）分区工具把分成5个100M的分区。格式化为xfs类型 mkfs -t xfs 分区。
+
+二、创建RAID10磁盘阵列：
+
+（3）使用  mdadm -Cv /dev/md1 -n 4 -l 10 /dev/sdc1 /dev/sdc2 /dev/sdc3 /dev/sdc5   创建一个名为md1的磁盘阵列
+（4）查看该磁盘阵列的详细信息  mdadm -Q /dev/md1
+（5）也可以使用  lsblk -f  命令查看磁盘阵列
+
+三、使用该磁盘阵列：
+
+（6）然后格式化该磁盘阵列  mkfs -t xfs /dev/md1
+（7）新建一个目录  mkdir /root/raid
+（8）挂载该磁盘阵列  mount -t xfs /dev/md1 /root/raid
+（9）使用 df -i /root/raid 查看此磁盘已经使用inode是多少
+（10）使用 touch /root/raid/hello{1..10} 创建10个文件
+（11）再次使用 df -i /root/raid 查看此磁盘已经使用inode，发现可用的inode少了10个
+
+四、模拟磁盘损坏情况：
+
+（12）使用mdadm /dev/md1 -f /dev/sdc3 来模拟/dev/sdc3磁盘已经损坏
+（13）使用mdadm /dev/md1 -r /dev/sdc3 来移除该损坏的硬盘
+（14）使用[root@localhost ~]# ls /root/raid 查看发现该磁盘阵列还能正常使用
+（15）使用[root@localhost ~]# mdadm -D /dev/md1 查看发现只有3块硬盘可以工作了。
+
+五、用新的硬盘进行热替换：
+
+（16）使用[root@localhost ~]# mdadm /dev/md1 -a /dev/sdc6 新添加一块新的硬盘
+（17）使用[root@localhost ~]# mdadm -D /dev/md1查看发现该磁盘阵列会自动完成数据重建工作
+
+六、删除磁盘阵列：
+
+（18）使用umount /dev/md1卸载该磁盘阵列
+（19）使用mdadm --stop /dev/md1 删除该磁盘阵列
+（20）使用lsblk -f 命令查看硬盘情况，看是否完成磁盘阵列的删除工作
+

@@ -1,0 +1,10 @@
+[Unit]
+Description=ping 1 every 30s
+
+[Timer]
+OnActiveSec=60
+OnUnitActiveSec=30
+Unit=ping1.service
+
+[Install]
+WantedBy=multi-user.target

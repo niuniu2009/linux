@@ -1,0 +1,10 @@
+[Unit]
+Description= ping 1
+
+[Service]
+Type=simple
+ExecStart=/root/temp/ping1.sh
+
+[Install]
+WantedBy=multi-user.target
+
