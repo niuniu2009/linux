@@ -1,4 +1,4 @@
-# 第11讲 Linux网络
+# 第11讲 Linux网卡的秘密
 
 [TOC]
 
@@ -432,7 +432,9 @@ lo      loopback    未托管   --
 
 ![image-20240501212517076](chapter_11.assets/image-20240501212517076.png)
 
-### （1）查看本机开放的端口netst
+<img src="chapter_11.assets/image-20250427184451487.png" alt="image-20250427184451487" style="zoom:80%;" />
+
+### （1）查看本机开放的端口netstat
 
 ```bash
 [root@almalinux ~]# netstat -atulnp
@@ -631,7 +633,7 @@ lsr@bogon ~ % scp a.png root@192.168.14.133:/root
 
 ==安装xrdp，并启动==
 
-<img src="image-20240502091504139.png" alt="image-20240502091504139" style="zoom:67%;" />
+![image-20250427184907501](chapter_11.assets/image-20250427184907501.png)
 
 ==服务端监听在3389端口==
 
