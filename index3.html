@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二维码展示</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --background-color: #ecf0f1;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .qrcode-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            justify-items: center;
+        }
+
+        .qrcode-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .qrcode-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .qrcode-card img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+        }
+
+        .qrcode-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .qrcode-card p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>《Linux操作系统与安全》</h1>
+    <p style="color: red; font-weight: bold; text-align: center;">
+        提醒：本次测试对象为因请假而错过测试的同学，以前测试过的同学不要重复测试。
+        测试时间要求：
+        5月8日 下午 14:00 - 16:00
+    </p>
+    <div class="qrcode-grid">
+        <div class="qrcode-card">
+            <img src="lesson_test\《Linux操作系统与安全》202503第1次随堂测试.png" alt="二维码 1">
+            <h3>第1次随堂测试（第4周）</h3>
+
+        </div>
+        <div class="qrcode-card">
+            <img src="lesson_test\《Linux操作系统与安全》202503第2次随堂测试.png" alt="二维码 2">
+            <h3>第2次随堂测试（第5周）</h3>
+
+        </div>
+        <div class="qrcode-card">
+            <img src="lesson_test\《Linux操作系统与安全》202503第3次随堂测试.png" alt="二维码 3">
+            <h3>第3次随堂测试（第6周）</h3>
+  
+        </div>
+        <div class="qrcode-card">
+            <img src="lesson_test\《Linux操作系统与安全》202503第4次随堂测试.png" alt="二维码 4">
+            <h3>第4次随堂测试（第7周）</h3>
+
+        </div>
+        <div class="qrcode-card">
+            <img src="lesson_test\《Linux操作系统与安全》202504第5次随堂测试.png" alt="二维码 5">
+            <h3>第5次随堂测试（第8周）</h3>
+
+        </div>
+        <div class="qrcode-card">
+            <img src="lesson_test\《Linux操作系统与安全》202504第6次随堂测试 (1).png" alt="二维码 6">
+            <h3>第6次随堂测试（第9周）</h3>
+
+        </div>
+        <div class="qrcode-card">
+            <img src="lesson_test\《Linux操作系统与安全》202504第7次随堂测试 (1).png" alt="二维码 7">
+            <h3>第7次随堂测试（第10周）</h3>
+
+        </div>
+    </div>
+</body>
+
+</html>
